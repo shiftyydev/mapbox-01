@@ -1,0 +1,47 @@
+.nav-pills .nav-link {
+    font-size: 1rem;
+    line-height: 1rem;
+    color: #5e5873;
+}
+
+.nav-pills .nav-link {
+    padding: .786rem 1.5rem;
+    border: 1px solid transparent;
+}
+
+.nav-pills .nav-link {
+    border-radius: .358rem;
+}
+
+.nav-pills .nav-link.active {
+    border-color: #7367f0;
+    -webkit-box-shadow: 0 4px 18px -4px rgb(115 103 240 / 65%);
+    box-shadow: 0 4px 18px -4px rgb(115 103 240 / 65%);
+}
+
+.flex-column {
+    width: 100%;
+}
+
+.nav-pills svg{
+    width:18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.nav-pills span{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #454545;
+}
+
+.nav-pills .nav-link.active {
+    border-color: black;
+    -webkit-box-shadow: 0 4px 18px -4px rgb(110 169 51);
+    box-shadow: 0 4px 18px -4px rgb(89 138 40);
+}

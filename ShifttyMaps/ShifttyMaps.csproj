@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{577BBE39-5B47-4CE4-BF6A-F3C1A6A0C170}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShifttyMaps</RootNamespace>
+    <AssemblyName>ShifttyMaps</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44335</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework6.Npgsql, Version=6.4.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework6.Npgsql.6.4.3\lib\net461\EntityFramework6.Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Npgsql, Version=6.0.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.6.0.3\lib\netstandard2.0\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.6.0.0\lib\net461\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.6.0.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.6.0.0\lib\net461\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Authentication\CustomAuthenticationFilter.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\VehicleController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="DataContext\ApplicationDbContext.cs" />
+    <Compile Include="DataContext\DbEntities.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vehicles.cs" />
+    <Compile Include="Models\Users.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\AppSetting.cs" />
+    <Compile Include="Utility\Common.cs" />
+    <Compile Include="Utility\EnumUtil.cs" />
+    <Compile Include="Utility\Numerics.cs" />
+    <Compile Include="Utility\Translator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Basemaps\Basemap.png" />
+    <Content Include="Basemaps\BasemapIcon.png" />
+    <Content Include="Basemaps\Blueprint.png" />
+    <Content Include="Basemaps\Day.png" />
+    <Content Include="Basemaps\Monochrome.png" />
+    <Content Include="Basemaps\Night.png" />
+    <Content Include="Basemaps\Satellite.jpg" />
+    <Content Include="Basemaps\SatelliteStreets.jpg" />
+    <Content Include="Basemaps\Standard.png" />
+    <Content Include="Basemaps\StreetMap.jpg" />
+    <Content Include="Content\bootstrap-sweetalert\sweetalert.css" />
+    <Content Include="Content\bootstrap-sweetalert\sweetalert.js" />
+    <Content Include="Content\bootstrap-sweetalert\sweetalert.min.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Card.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="ExternalDatatableFiles\datatables-autofill\css\autoFill.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-autofill\css\autoFill.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-autofill\js\autoFill.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-autofill\js\autoFill.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-autofill\js\dataTables.autoFill.js" />
+    <Content Include="ExternalDatatableFiles\datatables-autofill\js\dataTables.autoFill.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-bs4\css\dataTables.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-bs4\css\dataTables.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-bs4\js\dataTables.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-bs4\js\dataTables.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\css\buttons.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\css\buttons.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\js\buttons.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\js\buttons.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\js\buttons.colVis.js" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\js\buttons.colVis.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\js\buttons.flash.js" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\js\buttons.flash.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\js\buttons.html5.js" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\js\buttons.html5.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\js\buttons.print.js" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\js\buttons.print.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\js\dataTables.buttons.js" />
+    <Content Include="ExternalDatatableFiles\datatables-buttons\js\dataTables.buttons.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-colreorder\css\colReorder.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-colreorder\css\colReorder.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-colreorder\js\colReorder.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-colreorder\js\colReorder.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-colreorder\js\dataTables.colReorder.js" />
+    <Content Include="ExternalDatatableFiles\datatables-colreorder\js\dataTables.colReorder.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-fixedcolumns\css\fixedColumns.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-fixedcolumns\css\fixedColumns.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-fixedcolumns\js\dataTables.fixedColumns.js" />
+    <Content Include="ExternalDatatableFiles\datatables-fixedcolumns\js\dataTables.fixedColumns.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-fixedcolumns\js\fixedColumns.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-fixedcolumns\js\fixedColumns.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-fixedheader\css\fixedHeader.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-fixedheader\css\fixedHeader.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-fixedheader\js\dataTables.fixedHeader.js" />
+    <Content Include="ExternalDatatableFiles\datatables-fixedheader\js\dataTables.fixedHeader.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-fixedheader\js\fixedHeader.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-fixedheader\js\fixedHeader.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-keytable\css\keyTable.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-keytable\css\keyTable.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-keytable\js\dataTables.keyTable.js" />
+    <Content Include="ExternalDatatableFiles\datatables-keytable\js\dataTables.keyTable.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-keytable\js\keyTable.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-keytable\js\keyTable.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-responsive\css\responsive.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-responsive\css\responsive.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-responsive\js\dataTables.responsive.js" />
+    <Content Include="ExternalDatatableFiles\datatables-responsive\js\dataTables.responsive.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-responsive\js\responsive.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-responsive\js\responsive.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-rowgroup\css\rowGroup.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-rowgroup\css\rowGroup.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-rowgroup\js\dataTables.rowGroup.js" />
+    <Content Include="ExternalDatatableFiles\datatables-rowgroup\js\dataTables.rowGroup.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-rowgroup\js\rowGroup.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-rowgroup\js\rowGroup.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-rowreorder\css\rowReorder.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-rowreorder\css\rowReorder.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-rowreorder\js\dataTables.rowReorder.js" />
+    <Content Include="ExternalDatatableFiles\datatables-rowreorder\js\dataTables.rowReorder.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-rowreorder\js\rowReorder.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-rowreorder\js\rowReorder.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-scroller\css\scroller.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-scroller\css\scroller.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-scroller\js\dataTables.scroller.js" />
+    <Content Include="ExternalDatatableFiles\datatables-scroller\js\dataTables.scroller.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-scroller\js\scroller.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-scroller\js\scroller.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-searchbuilder\css\searchBuilder.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-searchbuilder\css\searchBuilder.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-searchbuilder\js\dataTables.searchBuilder.js" />
+    <Content Include="ExternalDatatableFiles\datatables-searchbuilder\js\dataTables.searchBuilder.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-searchbuilder\js\searchBuilder.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-searchbuilder\js\searchBuilder.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-searchpanes\css\searchPanes.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-searchpanes\css\searchPanes.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-searchpanes\js\dataTables.searchPanes.js" />
+    <Content Include="ExternalDatatableFiles\datatables-searchpanes\js\dataTables.searchPanes.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-searchpanes\js\searchPanes.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-searchpanes\js\searchPanes.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-select\css\select.bootstrap4.css" />
+    <Content Include="ExternalDatatableFiles\datatables-select\css\select.bootstrap4.min.css" />
+    <Content Include="ExternalDatatableFiles\datatables-select\js\dataTables.select.js" />
+    <Content Include="ExternalDatatableFiles\datatables-select\js\dataTables.select.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables-select\js\select.bootstrap4.js" />
+    <Content Include="ExternalDatatableFiles\datatables-select\js\select.bootstrap4.min.js" />
+    <Content Include="ExternalDatatableFiles\datatables\jquery.dataTables.js" />
+    <Content Include="ExternalDatatableFiles\datatables\jquery.dataTables.min.js" />
+    <Content Include="ExternalDatatableFiles\jszip\jszip.js" />
+    <Content Include="ExternalDatatableFiles\jszip\jszip.min.js" />
+    <Content Include="ExternalDatatableFiles\pdfmake\pdfmake.js" />
+    <Content Include="ExternalDatatableFiles\pdfmake\pdfmake.min.js" />
+    <Content Include="ExternalDatatableFiles\pdfmake\vfs_fonts.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\customerBoundary.png" />
+    <Content Include="Images\customerBoundaryNo.png" />
+    <Content Include="Images\E - Copy.png" />
+    <Content Include="Images\E.png" />
+    <Content Include="Images\GrrenPin.jpg" />
+    <Content Include="Images\LiveLocation.png" />
+    <Content Include="Images\LiveLocationNo.png" />
+    <Content Include="Images\Loader.gif" />
+    <Content Include="Images\marker.png" />
+    <Content Include="Images\N - Copy.png" />
+    <Content Include="Images\N.png" />
+    <Content Include="Images\NE - Copy.png" />
+    <Content Include="Images\NE.png" />
+    <Content Include="Images\NotificationIcon.png" />
+    <Content Include="Images\NW - Copy.png" />
+    <Content Include="Images\NW.png" />
+    <Content Include="Images\OfflineDot.gif" />
+    <Content Include="Images\OnlineDot.gif" />
+    <Content Include="Images\RedPin.jpg" />
+    <Content Include="Images\RouteStop.png" />
+    <Content Include="Images\S - Copy.png" />
+    <Content Include="Images\S.png" />
+    <Content Include="Images\SE - Copy.png" />
+    <Content Include="Images\SE.png" />
+    <Content Include="Images\ShiftyyLogo.png" />
+    <Content Include="Images\StillTruck.png" />
+    <Content Include="Images\Stop.png" />
+    <Content Include="Images\StopLiveLocation.png" />
+    <Content Include="Images\StopOld.png" />
+    <Content Include="Images\SW - Copy.png" />
+    <Content Include="Images\SW.png" />
+    <Content Include="Images\TruckImage.png" />
+    <Content Include="Images\W - Copy.png" />
+    <Content Include="Images\W.png" />
+    <Content Include="Images\Yellow.png" />
+    <Content Include="Js\Map\Index.js" />
+    <Content Include="Js\Vehicles\Index.js" />
+    <Content Include="Js\Users\Index.js" />
+    <Content Include="NewDesignFiles\bootstrap-toastr\toastr.css" />
+    <Content Include="NewDesignFiles\bootstrap-toastr\toastr.js" />
+    <Content Include="NewDesignFiles\bootstrap-toastr\toastr.min.css" />
+    <Content Include="NewDesignFiles\bootstrap-toastr\toastr.min.js" />
+    <Content Include="NewDesignFiles\css\css\32px.png" />
+    <Content Include="NewDesignFiles\css\css\bstreeview.min.css" />
+    <Content Include="NewDesignFiles\css\css\jquery-waves.css" />
+    <Content Include="NewDesignFiles\css\css\jquery.mCustomScrollbar.min.css" />
+    <Content Include="NewDesignFiles\css\css\odometer-theme-default.css" />
+    <Content Include="NewDesignFiles\css\css\style.css" />
+    <Content Include="NewDesignFiles\css\css\throbber.gif" />
+    <Content Include="NewDesignFiles\css\images\download.svg" />
+    <Content Include="NewDesignFiles\images\landscape.png" />
+    <Content Include="NewDesignFiles\images\leftImage.png" />
+    <Content Include="NewDesignFiles\images\login.png" />
+    <Content Include="NewDesignFiles\images\logo.png" />
+    <Content Include="NewDesignFiles\images\logoIcon.png" />
+    <Content Include="NewDesignFiles\images\logoVerticale.png" />
+    <Content Include="NewDesignFiles\images\marker-bulk.png" />
+    <Content Include="NewDesignFiles\images\marker-recycle.png" />
+    <Content Include="NewDesignFiles\images\MobileAtlas.png" />
+    <Content Include="NewDesignFiles\images\neighbourhood.png" />
+    <Content Include="NewDesignFiles\images\opencycleMap.png" />
+    <Content Include="NewDesignFiles\images\outdoors.png" />
+    <Content Include="NewDesignFiles\images\pioneer.png" />
+    <Content Include="NewDesignFiles\images\PolygonIcon.png" />
+    <Content Include="NewDesignFiles\images\profile.jpg" />
+    <Content Include="NewDesignFiles\images\rightImage.png" />
+    <Content Include="NewDesignFiles\images\roadMap.png" />
+    <Content Include="NewDesignFiles\images\spinalMap.png" />
+    <Content Include="NewDesignFiles\images\terrain.png" />
+    <Content Include="NewDesignFiles\images\TransparentLogo.png" />
+    <Content Include="NewDesignFiles\images\transport.png" />
+    <Content Include="NewDesignFiles\images\transportDark.png" />
+    <Content Include="NewDesignFiles\images\UserIcon.png" />
+    <Content Include="NewDesignFiles\images\Yard-Dog-Systems-Logo-B.jpg" />
+    <Content Include="NewDesignFiles\js\bstreeview.min.js" />
+    <Content Include="NewDesignFiles\js\custom.js" />
+    <Content Include="NewDesignFiles\js\jquery-waves.js" />
+    <Content Include="NewDesignFiles\js\jquery.expander.min.js" />
+    <Content Include="NewDesignFiles\js\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="NewDesignFiles\js\jquery.tooltip.js" />
+    <Content Include="NewDesignFiles\js\jquery.validate.js" />
+    <Content Include="NewDesignFiles\js\main.js" />
+    <Content Include="NewDesignFiles\js\odometer.js" />
+    <Content Include="NewDesignFiles\js\popper.min.js" />
+    <Content Include="NewDesignFiles\js\script.js" />
+    <Content Include="NewDesignFiles\js\scripts.js" />
+    <Content Include="NewDesignFiles\js\toast.js" />
+    <Content Include="NewDesignFiles\js\validations.js" />
+    <Content Include="Scripts\anime.js" />
+    <Content Include="Scripts\anime.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ExternalDatatableFiles\pdfmake\pdfmake.js.map" />
+    <Content Include="ExternalDatatableFiles\pdfmake\pdfmake.min.js.map" />
+    <Content Include="NewDesignFiles\.DS_Store" />
+    <Content Include="NewDesignFiles\bootstrap-toastr\README.md" />
+    <Content Include="NewDesignFiles\bootstrap-toastr\toastr.min.js.map" />
+    <Content Include="NewDesignFiles\css\css\style.css.map" />
+    <Content Include="NewDesignFiles\css\sass\partials\_dashboard.scss" />
+    <Content Include="NewDesignFiles\css\sass\partials\_Division.scss" />
+    <Content Include="NewDesignFiles\css\sass\partials\_login.scss" />
+    <Content Include="NewDesignFiles\css\sass\partials\_Map.scss" />
+    <Content Include="NewDesignFiles\css\sass\partials\_MapCss.scss" />
+    <Content Include="NewDesignFiles\css\sass\partials\_profile.scss" />
+    <Content Include="NewDesignFiles\css\sass\partials\_Users.scss" />
+    <Content Include="NewDesignFiles\css\sass\style.scss" />
+    <Content Include="Scripts\.DS_Store" />
+    <Content Include="Scripts\css\style.css.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\excel-files\1516625474DABH01_New.xlsx" />
+    <Content Include="Content\Important.docx" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\css\jquery-waves.css" />
+    <Content Include="Scripts\css\jquery.mCustomScrollbar.min.css" />
+    <Content Include="Scripts\css\odometer-theme-default.css" />
+    <Content Include="Scripts\css\select2.min.css" />
+    <Content Include="Scripts\css\style.css" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\images\checkin.png" />
+    <Content Include="Scripts\images\loader.gif" />
+    <Content Include="Scripts\images\login.png" />
+    <Content Include="Scripts\images\logo.png" />
+    <Content Include="Scripts\images\logoIcon.png" />
+    <Content Include="Scripts\images\logoVerticale.png" />
+    <Content Include="Scripts\images\meals.png" />
+    <Content Include="Scripts\images\profile.jpg" />
+    <Content Include="Scripts\images\scans.png" />
+    <Content Include="Scripts\images\truck1.png" />
+    <Content Include="Scripts\images\truck2.png" />
+    <Content Include="Scripts\images\visitors.png" />
+    <Content Include="Scripts\images\Yard-Dog-Systems-Logo-B.jpg" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-waves.js" />
+    <Content Include="Scripts\jquery.expander.min.js" />
+    <Content Include="Scripts\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.tooltip.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\odometer.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\script.js" />
+    <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\toast.js" />
+    <Content Include="Scripts\underscore-min.js" />
+    <Content Include="Scripts\validations.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Map\Index.cshtml" />
+    <Content Include="Scripts\sass\partials\_dashboard.scss" />
+    <Content Include="Scripts\sass\partials\_Division.scss" />
+    <Content Include="Scripts\sass\partials\_login.scss" />
+    <Content Include="Scripts\sass\partials\_Map.scss" />
+    <Content Include="Scripts\sass\partials\_profile.scss" />
+    <Content Include="Scripts\sass\partials\_Users.scss" />
+    <Content Include="Scripts\sass\style.scss" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\_Load_Users.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Vehicle\Index.cshtml" />
+    <Content Include="Views\Vehicle\_LoadVehicle.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>65145</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44335/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

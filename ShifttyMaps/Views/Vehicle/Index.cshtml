@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<article class="article">
+     <div class="row">
+        <div class="col-md-12">
+            <div class="boxWhiteContent visible">
+                <a href="#home" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-theme btnPosition" onclick="AddVehicles();">Add New</a>
+                <div id="loadVehicles"></div>
+            </div>
+        </div>
+    </div>
+</article>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <h5 class="modal-title" id="staticBackdropLabel"><i data-feather="user-plus"></i> <span>Add New</span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating mb-3">
+                   <input type="text" class="form-control" id="txtName" placeholder="name@example.com" />
+                    <label for="floatingInput">Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtVehicleId" placeholder="name@example.com" />
+                    <label for="floatingInput">Vehicle Id</label>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Discard</button>
+                    <button type="button" class="btn btn-theme" id="btnUpdate" onclick="UpdateVehicle();" >Update</button>
+                    <button type="button" class="btn btn-theme" id="btnAdd" onclick="SaveVehicle();" >Add</button>
+                </div>
+        </div>
+    </div>
+</div>
+<script src="~/Js/Vehicles/Index.js"></script>

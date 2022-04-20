@@ -1,0 +1,78 @@
+.mapScreen .NavArticle {
+    background: none;
+}
+
+.mapScreen .boxWhite {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.mapScreen .aside {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.place-card-large {
+    display: none !important;
+}
+
+.Rightaside {
+    background: #fff;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    max-width: 400px;
+    z-index: 99;
+}
+
+.FilterIcon {
+    background: #fff;
+    padding: 12px 15px;
+    border-radius: 0.428rem 0 0 0.428rem;
+    -webkit-box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    position: absolute;
+    left: -54px;
+    top: 35%;
+}
+
+.Rightaside {
+    position: fixed;
+    right: -260px;
+    top: 0;
+    width: 260px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.OpenFilter .Rightaside{
+    right: 0px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.FilterIcon svg {
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    /* transform: rotate(3deg); */
+    /* transform: rotate(0.3rad);/ */
+    /* transform: rotate(3grad); */
+    /* transform: rotate(.03turn);  */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

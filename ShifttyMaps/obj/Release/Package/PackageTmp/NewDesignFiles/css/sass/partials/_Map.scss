@@ -1,0 +1,618 @@
+.mapScreen .NavArticle {
+    background: none;
+}
+
+.mapScreen .boxWhite {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.mapScreen .aside {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.place-card-large {
+    display: none !important;
+}
+
+.Rightaside {
+    background: #fff;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    max-width: 400px;
+    z-index: 99;
+}
+
+.FilterIcon {
+    background: #fff;
+    padding: 12px 15px;
+    border-radius: 0.428rem 0 0 0.428rem;
+    -webkit-box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    position: absolute;
+    left: -54px;
+    top: 35%;
+}
+
+.Rightaside {
+    position: fixed;
+    right: -401px;
+    top: 0;
+    width: 460px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.OpenFilter .Rightaside {
+    right: 0px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.FilterIcon svg {
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    /* transform: rotate(3deg); */
+    /* transform: rotate(0.3rad);/ */
+    /* transform: rotate(3grad); */
+    /* transform: rotate(.03turn);  */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.OpenFilter .NavArticle {
+    right: 400px;
+}
+
+.titleFilters {
+    padding: 1.5rem;
+    border-bottom: 1px solid #ebe9f1;
+    position: relative;
+}
+
+.titleFilters h2 {
+    margin-bottom: 0px;
+    font-family: Montserrat, Helvetica, Arial, serif;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #5e5873;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.OpenFilter .FilterIcon {
+    background: #454545;
+}
+
+.OpenFilter .FilterIcon svg {
+    color: #fff;
+}
+
+.titleFilters svg {
+    position: absolute;
+    right: 20px;
+    top: 26px;
+    color: #777;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.titleFilters svg:hover {
+    opacity: 1;
+}
+
+.FilterBody {
+    padding: 1.5rem 1.5rem 0.1rem 1.5rem;
+}
+
+.FilterBlock {
+    margin-bottom: 15px;
+}
+
+.FilterBody.labelBold label {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.FilterBlock ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    display: table;
+    width: 95%;
+}
+
+.FilterBlock ul li {
+    width: auto;
+    height: auto;
+    display: table-cell;
+    margin: 0;
+    padding: 0 3px;
+}
+
+.FilterBlock ul li img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.FilterBlock ul li.current a img {
+    border: 3px solid #454545;
+}
+
+// Select with images css
+.vodiapicker {
+    display: none;
+}
+
+#a {
+    padding-left: 0px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+#a img,
+.btn-select img {
+    width: 24px;
+}
+
+#a li {
+    list-style: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: block;
+    margin: 0;
+    padding: 3px 8px;
+}
+
+.btn-select li img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+}
+
+.btn-select li span{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#a li:hover {
+    background-color: #f4f3f3;
+}
+
+.btn-select::before{
+    position: absolute;
+    right: -2px;
+    content: "";
+    top: 4px;
+    background: url(../images/download.svg);
+    background-position: right 21.15rem center;
+    background-size: 16px 12px;
+    width: 15px;
+    height: 15px;
+}
+
+#a li img {
+    margin: 5px;
+}
+
+#a li span,
+.btn-select li span {
+    margin-left: 10px;
+}
+
+/* item list */
+
+.b {
+    display: none;
+    width: 108.3%;
+    box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    margin: 5px -13px 0;
+    padding: 0 0px;
+    position: relative;
+    z-index: 999;
+    background: #fff;
+}
+
+.open {
+    display: show !important;
+}
+
+.btn-select {
+    margin-top:12px;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0;
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    position: relative;
+}
+.btn-select li {
+    list-style: none;
+    float: left;
+    padding-bottom: 0px;
+    cursor: pointer;
+}
+
+.btn-select:hover li {
+    margin-left: 0px;
+}
+
+.btn-select:hover {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.btn-select:focus {
+    outline: none;
+}
+
+.lang-select {
+    margin-left: 0;
+}
+
+// Tooltip css
+
+.tooltip-box {
+    position: absolute;
+    background: #383836;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 25px 7px rgba(108, 108, 108, 0.16);
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    z-index: 99999;
+}
+
+.tooltip-box span {
+    vertical-align: middle;
+}
+
+.info {
+    font-size: 13px;
+    color: #969696;
+    line-height: 1;
+    display: block;
+}
+
+.icon {
+    margin-left: 10px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
+
+.icon img {
+    vertical-align: middle;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 8px solid #333;
+}
+
+/* ANIMATIONS */
+
+/* Open/close animations */
+
+/* fade */
+
+.tooltip-fade {
+    opacity: 0;
+    -webkit-transition-property: opacity;
+    -moz-transition-property: opacity;
+    -o-transition-property: opacity;
+    -ms-transition-property: opacity;
+    transition-property: opacity;
+}
+.tooltip-fade.tooltip-show {
+    opacity: 1;
+}
+
+/* grow */
+
+.tooltip-grow {
+    -webkit-transform: scale(0, 0);
+    -moz-transform: scale(0, 0);
+    -o-transform: scale(0, 0);
+    -ms-transform: scale(0, 0);
+    transform: scale(0, 0);
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    -ms-transition-property: -ms-transform;
+    transition-property: transform;
+    -webkit-backface-visibility: hidden;
+}
+.tooltip-grow.tooltip-show {
+    -webkit-transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    transform: scale(1, 1);
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    -ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+/* swing */
+
+.tooltip-swing {
+    opacity: 0;
+    -webkit-transform: rotateZ(4deg);
+    -moz-transform: rotateZ(4deg);
+    -o-transform: rotateZ(4deg);
+    -ms-transform: rotateZ(4deg);
+    transform: rotateZ(4deg);
+    -webkit-transition-property: -webkit-transform, opacity;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    -ms-transition-property: -ms-transform;
+    transition-property: transform;
+}
+.tooltip-swing.tooltip-show {
+    opacity: 1;
+    -webkit-transform: rotateZ(0deg);
+    -moz-transform: rotateZ(0deg);
+    -o-transform: rotateZ(0deg);
+    -ms-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+    -webkit-transition-timing-function: cubic-bezier(0.23, 0.635, 0.495, 1);
+    -webkit-transition-timing-function: cubic-bezier(0.23, 0.635, 0.495, 2.4);
+    -moz-transition-timing-function: cubic-bezier(0.23, 0.635, 0.495, 2.4);
+    -ms-transition-timing-function: cubic-bezier(0.23, 0.635, 0.495, 2.4);
+    -o-transition-timing-function: cubic-bezier(0.23, 0.635, 0.495, 2.4);
+    transition-timing-function: cubic-bezier(0.23, 0.635, 0.495, 2.4);
+}
+
+/* fall */
+
+.tooltip-fall {
+    -webkit-transition-property: top;
+    -moz-transition-property: top;
+    -o-transition-property: top;
+    -ms-transition-property: top;
+    transition-property: top;
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    -ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+.tooltip-fall.tooltip-initial {
+    top: 0;
+}
+.tooltip-fall.tooltip-show {
+}
+.tooltip-fall.tooltip-dying {
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    -ms-transition-property: all;
+    transition-property: all;
+    top: 0;
+    opacity: 0;
+}
+
+/* slide */
+
+.tooltip-slide {
+    -webkit-transition-property: left;
+    -moz-transition-property: left;
+    -o-transition-property: left;
+    -ms-transition-property: left;
+    transition-property: left;
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    -ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+.tooltip-slide.tooltip-initial {
+    left: -40px;
+}
+.tooltip-slide.tooltip-show {
+}
+.tooltip-slide.tooltip-dying {
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    -ms-transition-property: all;
+    transition-property: all;
+    left: 0;
+    opacity: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .col {
+        width: 100%;
+    }
+}
+
+.customSelect {
+    padding-top: 1.625rem;
+    padding-bottom: 0.625rem;
+    height: calc(3.5rem + 2px);
+    padding: 1rem 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    position: relative;
+}
+
+
+
+.customSelect label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 1rem 0.75rem;
+    pointer-events: none;
+    border: 1px solid transparent;
+    transform-origin: 0 0;
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+    font-weight: 500;
+    margin-bottom: 10px;
+    opacity: 0.65;
+    transform: scale(0.85) translateY(-0.6rem) translateX(0.15rem);
+    font-weight: normal;
+}
+
+.AsideFooterFilter {
+    position: relative;
+    bottom: 0px;
+    left: auto;
+    right: 0px;
+    padding: 1.5rem;
+    border-top: 1px solid #ebe9f1;
+}
+
+.ItemData{
+    padding: 15px;
+}
+
+.borderData {
+    border-bottom: 1px solid #ddd;
+    line-height: 44px;
+}
+
+.borderData svg{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.borderData span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.borderData .text-right span {
+    line-height: 22px;
+    font-weight: normal;
+    font-size: 14px;
+    padding: 10px 0px;
+}
+
+.borderData .text-right{
+    font-size: 14px;
+}
+
+.SampleIcon{
+    position: fixed;
+    right: 60%;
+    top: 300px;
+}
+
+
+// Map Updated css start here
+.MapSpace {
+    padding: 0;
+}
+
+
+
+// Map updated css end here
+
+@media (max-width:767px){
+    .AsideClose.mapScreen .MenuAside {
+        width: 260px;
+        left: -260px;
+    }
+    .AsideClose.mapScreen .aside {
+        width: 260px;
+        left: -260px;
+    }
+    .AsideClose.mapScreen .NavArticle {
+        left: 0px;
+        transform: translate(0, 0px);
+    }
+
+    .mapScreen .NavArticle {
+        left: 0px;
+        transform: translate(69.1%, 0px);
+    }
+    .mapScreen .MenuAside {
+        width: 260px;
+        left: 0px;
+    }
+    .mapScreen .aside {
+        width: 260px;
+        left: 0px;
+    }
+    .Rightaside{
+        width: 100%;
+    }
+    .FilterIcon {
+        left: -54px;
+        z-index: 9999999;
+        right: auto;
+    }
+    .OpenFilter .NavArticle {
+        right: 0;
+    }
+}
+
+
+// Update css start here
+
+.searchBlock svg {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+}
+
+.searchBlock .form-control{
+    padding-right: 40px;
+}
+
+.FilterBody {
+    height: calc(80vh);
+    overflow: auto;
+}
+
+.FilterBody h5 {
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 25px;
+}
+
+.searchBlock{
+    position: relative;
+}
+
+.ControlsBlock .row{
+    align-items: center;
+}

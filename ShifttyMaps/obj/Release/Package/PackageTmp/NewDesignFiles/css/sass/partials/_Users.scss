@@ -1,0 +1,327 @@
+table.dataTable th {
+    background: #f3f2f7;
+    color: #6e6b7b;
+    font-weight: 400;
+    vertical-align: top;
+    text-transform: uppercase;
+    font-size: 0.857rem;
+    border-top: 1px solid #ebe9f1;
+    border-bottom: 2px solid #ebe9f1 !important;
+    padding: 0.52rem 1rem;
+}
+
+table.dataTable td {
+    padding: 0.72rem 1rem;
+    vertical-align: middle;
+    font-size: 0.9rem;
+    color: #6e6b7b;
+}
+
+.OverflowHidden{
+    overflow: hidden;
+}
+
+table.dataTable td svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.5rem;
+}
+
+.table {
+    margin: 0 0 0 -1rem;
+    width: 103.3%;
+}
+
+table.dataTable>thead .sorting_asc:after {
+    bottom: 0.7em;
+}
+
+table.dataTable>thead .sorting_asc:before {
+    bottom: 0.8em;
+}
+
+.userImg {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.userImg img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.Username {
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 18px;
+}
+
+.Username small {
+    display: block;
+    font-size: 0.857rem;
+    color: #b9b9c3;
+    display: block;
+}
+
+.Username a {
+    color: #454545;
+}
+
+.adminIco {
+    color: #ea5455;
+}
+
+// .maxWidth {
+//     max-width: 150px;
+//     display: block;
+// }
+table.dataTable td .IconBtns svg {
+    margin: 0px;
+}
+
+.IconBtns {
+    background: #26d6eb;
+    color: #fff;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 31px;
+    margin: 0 4px;
+    opacity: 0.6;
+}
+
+.IconBtns:hover {
+    color: #fff;
+    opacity: 1;
+}
+
+.IconBtns.lightcolor {
+    background: #00d4bd;
+}
+
+.visible {
+    overflow: hidden;
+}
+
+table.dataTable td .dropdown-menu .dropdown-item {
+    font-size: 14px;
+}
+
+table.dataTable td .dropdown-menu .dropdown-item svg {
+    width: 16px;
+    height: 16px;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+    padding-top: 0.85em;
+    color: #b9b9c3;
+    font-size: 14px;
+}
+
+div.dataTables_wrapper div.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    color: #b9b9c3;
+    font-size: 14px;
+}
+
+div.dataTables_wrapper div.dataTables_filter label {
+    font-weight: normal;
+    white-space: nowrap;
+    text-align: left;
+    color: #b9b9c3;
+    font-size: 14px;
+}
+
+.editIco {
+    color: #826bf8;
+}
+
+.userIco {
+    color: #26d6eb;
+}
+
+.page-item.active .page-link {
+    background-color: #454545;
+    border-color: #454545;
+}
+
+.page-link {
+    color: #454545;
+}
+
+.dataTables_wrapper .row:first-child {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.btnPosition {
+    position: absolute;
+    right: 20px;
+    top: 23px;
+}
+
+.dataTables_filter .form-control-sm {
+    min-height: calc(1.5em + 0.5rem + 9px);
+}
+
+.dataTables_length .form-select-sm {
+    padding-top: 0.55rem;
+    padding-bottom: 0.35rem;
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: right;
+    padding-right: 140px;
+}
+
+.page-link:hover {
+    color: #383836;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control::before {
+    content: "x";
+    background-color: #d33333;
+    color: #fff;
+    padding: 0;
+    border-radius: 50%;
+    position: absolute;
+    left: 10px;
+    top: 18px;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 17px;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control::after {
+    content: "+";
+    background-color: #28c76f;
+    color: #fff;
+    padding: 0;
+    border-radius: 50%;
+    position: absolute;
+    left: 10px;
+    top: 18px;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 17px;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control::after {
+    display: none;
+}
+
+table.dataTable tr td:first-child {
+    padding: 0.72rem 1rem 0.72rem 2.4rem;
+    position: relative;
+}
+
+table.dataTable tr.child td.child {
+    padding-left: 15px;
+}
+
+.modal-header{
+    background: #454545;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-title{
+    color: #fff;
+}
+
+.modal-title svg{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.modal-title span{
+    display: inline-block;
+    vertical-align: middle;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+.btn-close{
+    color: #fff;
+}
+
+
+.modal-header .box div {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border: 6px solid rgba(255, 255, 255, 0.3);
+}
+
+.select2-container--default .select2-selection--multiple {
+    border: 1px solid #ced4da;
+}
+
+.dtr-details{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #454545;
+    border: 1px solid #447117;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+    color: #fff;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    border-right: 1px solid #447117;
+    color: #fff;
+}
+
+.select2-container--default .select2-results__option--selected {
+    background-color: #454545;
+    color: #fff;
+    margin-bottom: 1px;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: #497b17;
+    color: white;
+}
+
+@media (max-width: 767px) {
+    .btnPosition {
+        position: relative;
+        right: 0;
+        top: 0;
+        margin-bottom: 20px;
+    }
+    div.dataTables_wrapper div.dataTables_filter {
+        padding-right: 0;
+        margin-top: 15px;
+        text-align: center;
+    }
+    .visible {
+        overflow: hidden;
+    }
+    table.dataTable {
+        position: relative;
+    }
+    .maxWidth {
+        max-width: 100%;
+        display: block;
+        white-space: normal;
+    }
+    .table {
+        margin: 0 0 0 0;
+    }
+}

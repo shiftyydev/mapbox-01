@@ -1,0 +1,342 @@
+﻿@{
+    ViewBag.Title = "Map";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Display a map on a webpage</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/turf/v2.0.2/turf.min.js'></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            /*  position: relative;*/
+            /* top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 650px;*/
+            /*margin-top: -150px;*/
+        }
+
+        table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before, table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before {
+            /*display:none;*/
+        }
+
+        .marker {
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #fitBounds {
+            background-color: #ee8a65;
+            font-family: Helvetica, Arial, Sans-Serif;
+            color: #fff;
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            padding: 0.7em;
+            border-radius: 0.2em;
+            cursor: pointer;
+        }
+        /* #here_api_search_input {
+            z-index: 1000;
+            position: absolute;
+            left: 0;
+            margin: 10px 10px 10px 10px;
+            border-radius: 7px;
+            width: 20%;
+        }*/
+
+        #here_api_search_input {
+            position: relative;
+            z-index: 10000;
+        }
+
+        .ui-autocomplete {
+            z-index: 9999 !important;
+        }
+
+        #loadingDiv {
+            z-index: 1050;
+        }
+
+        #menu {
+            background: white;
+            padding: 10px;
+            font-family: 'Open Sans', sans-serif;
+            right: 0;
+            /*margin-top:100px;*/
+            margin-top: 200px;
+            margin-right: 10px;
+            z-index: 1100;
+        }
+
+        #legend, #legendClassification {
+            padding: 10px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            line-height: 18px;
+            height: auto;
+            /* margin-bottom: 40px;*/
+            margin-bottom: 1%;
+            width: auto;
+        }
+
+        #legend01 {
+            padding: 10px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            line-height: 18px;
+            height: auto;
+            margin-bottom: 150px;
+            width: auto;
+        }
+
+        #divParcelEditPanel {
+            padding: 10px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            line-height: 18px;
+            height: auto;
+            margin-bottom: 12% /*150px*/;
+            width: 140px;
+        }
+
+        .legend-key {
+            display: inline-block;
+            border-radius: 20%;
+            width: 10px;
+            height: 10px;
+            margin-right: 5px;
+        }
+
+        .map-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.8);
+            /* margin-left: 280px;*/
+            margin-left: 6%;
+            font-family: Arial, sans-serif;
+            overflow: auto;
+            border-radius: 3px;
+        }
+
+        #btnTransparency, #btnEditPolygon {
+            background: white;
+            /*padding: 10px;*/
+            font-family: 'Open Sans', sans-serif;
+            right: 0;
+            margin-top: 280px;
+            margin-right: 10px;
+            z-index: 1100;
+            color: black;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 35px;
+            height: 15px;
+        }
+
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 10px;
+                width: 10px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+        input:checked + .slider {
+            background-color: #6ea933;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #6ea933;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(15px);
+            -ms-transform: translateX(15px);
+            transform: translateX(15px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before 
+        {
+                border-radius: 50%;
+         }
+
+        #slideOut {
+            position: fixed;
+            width: 275px;
+            height: 800px;
+            top: 30px;
+            right: -275px;
+            transition-property: all;
+            transition-duration: .5s;
+            transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+            z-index: 999999;
+        }
+
+        .showSlideOut 
+        {
+            right: 0px !important;
+        }
+
+        .slideOutTab 
+        {
+            color: #FFFFFF;
+            margin-top: 67px;
+            position: absolute;
+            left: -60px;
+            /*height: 200px;*/
+            height: 0px;
+            width: 60px;
+            -webkit-box-shadow: 0 5px 15px rgb(0 0 0 / 50%);
+            box-shadow: 0 5px 15px rgb(0 0 0 / 50%);
+            background: #6ea933;
+            /* border-radius: 15px 0px 0px 15px;*/
+        }
+
+        .slideOutTab div {
+            border-radius: 4px;
+            text-align: center;
+            position: relative;
+            right: -19px;
+            top: 90px;
+            background: #fff;
+            border: 1px solid groove;
+            width: 35px;
+            z-index: 999;
+            /*-webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);*/
+            writing-mode: lr-tb;
+         }
+    </style>
+</head>
+<body>
+    <div id="slideOut">
+        <!--   // Tab -->
+        <div class="slideOutTab">
+            <div>
+                <span class="fa fa-map" style="color:black;"></span>
+            </div>
+        </div>
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h4 class="modal-title">Select Basemap</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="navbar-header" style="margin:10px 0">
+                    <div class="drawer-body">
+
+                        <div id="div_sector" class="row six-cols" style="">
+                            <ul id="sector-buttons" style="" class="col-sm-12 buttons-holder sector list-unstyled list-inline add other">
+                                <li class="col-md-12" style="margin:10px;" id="btnStreet" onclick="switchLayer('mapbox://styles/txeap/ckvfjnwzzgf4i14s7u0eptth8')">
+                                    <div class="col-md-12">
+                                        <img src="~/Basemaps/StreetMap.jpg" height="60" width="60" style="border-radius:3px;" /><b> Street</b>
+                                    </div>
+
+                                </li>
+                                <li class="col-md-12" style="margin:10px;" id="btnMonochrome" onclick="switchLayer('mapbox://styles/txeap/ckqv5eka81kaw18qveqceh1vf')">
+                                    <div class="col-md-12">
+                                        <img src="~/Basemaps/Monochrome.png" height="60" width="60" style="border-radius:3px;" /><b> Monochrome</b>
+                                    </div>
+
+                                </li>
+                                <li class="col-md-12" style="margin:10px;" id="btnDay" onclick="switchLayer('mapbox://styles/txeap/ckqv5bht71k7v18qvvkpq1r8x')">
+                                    <div class="col-md-12">
+                                        <img src="~/Basemaps/Day.png" height="60" width="60" style="border-radius:3px;" /><b> Day</b>
+                                    </div>
+
+                                </li>
+                                <li class="col-md-12" style="margin:10px;" id="btnNight" onclick="switchLayer('mapbox://styles/txeap/ckqv598nh8r6f18o923zk6yzb')">
+                                    <div class="col-md-12">
+                                        <img src="~/Basemaps/Night.png" height="60" width="60" style="border-radius:3px;" /><b> Night</b>
+                                    </div>
+
+                                </li>
+                                <li class="col-md-12" style="margin:10px;" id="btnSatelliteStreets" onclick="switchLayer('mapbox://styles/txeap/ckqv57s5c014f18mre7xvk3xx')">
+                                    <div class="col-md-12">
+                                        <img src="~/Basemaps/SatelliteStreets.jpg" height="60" width="60" style="border-radius:3px;" /><b> Satellite Streets</b>
+                                    </div>
+
+                                </li>
+                                <li class="col-md-12" style="margin:10px;" id="btnStandards" onclick="switchLayer('mapbox://styles/txeap/ckgdhfhmm1qir1amtu1do28pp')">
+                                    <div class="col-md-12">
+                                        <img src="~/Basemaps/Standard.png" height="60" width="60" style="border-radius:3px;" /><b> Standard</b>
+                                    </div>
+
+                                </li>
+                                <li class="col-md-12" style="margin:10px;" id="btnBlueprints" onclick="switchLayer('mapbox://styles/txeap/ckfh8dfyn0afl19tk58k918o4')">
+                                    <div class="col-md-12">
+                                        <img src="~/Basemaps/Blueprint.png" height="60" width="60" style="border-radius:3px;" /><b> Blueprint</b>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <!--        -->
+            </div>
+            <div class="modal-footer"> </div>
+        </div>
+    </div>
+    <div id="map" style="width:100%; height:100%; ">
+    </div>
+    <div class="map-overlay">
+        <div style="margin:10px;">
+            <input type='text' id='txtDateFilter' class="form-control" />
+        </div>
+        <div id="ddllegend" style="margin:10px;"></div>
+        <div id="legend"></div>
+        <div id="legendClassification"></div>
+    </div>
+    <div id="loadingDiv" style="visibility:hidden;" class="loading">Loading&#8230;</div>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.2/mapbox-gl-draw.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.2/mapbox-gl-draw.css" type="text/css">
+    <script src="~/Js/Map/Index.js"></script>
+</body>
+</html>

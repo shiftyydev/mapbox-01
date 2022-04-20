@@ -1,0 +1,78 @@
+// Variables
+$font-stack: "Roboto",
+sans-serif;
+$font-heading: "Oswald",
+sans-serif;
+$primary-color: #454545;
+$secondary-color: #383836;
+$body-color: #f0eff1;
+// Body Style
+body {
+    font-family: $font-stack;
+    background-color: $body-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-heading;
+    font-weight: 700;
+    color: #383836;
+}
+
+
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+.select2-container .select2-selection--multiple {
+    min-height: 58px;
+    padding-top: 20px;
+}
+
+.form-floating.mulipltField>.form-control:not(:placeholder-shown)~label{
+    opacity: 1;
+    transform: scale(.85) translateY(-0.8rem) translateX(.15rem);
+    padding-left: 3px;
+}
+
+
+
+// Import template Fonts
+@import "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap";
+@import "https:////fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+// Import Bootstrap
+@import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css";
+// Import Datatables
+@import "https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css";
+@import "https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css";
+// Import Select2 Plugin
+@import "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css";
+// Import fontawesome css
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css";
+// Import Custom Scrollbar
+@import "jquery.mCustomScrollbar.min.css";
+// Import Custom Scrollbar
+@import "odometer-theme-default.css";
+// Import Ripple Effect
+@import "jquery-waves.css";
+// Import Tree view css
+@import "bstreeview.min.css";
+// Import Partials
+@import "partials/login";
+@import "partials/dashboard";
+@import "partials/Users";
+@import "partials/Division";
+@import "partials/Map";
+@import "partials/profile";
+@import "partials/MapCss";

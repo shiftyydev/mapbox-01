@@ -1,0 +1,28 @@
+iframe{
+    display: block;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+.MapSpace{
+    padding: 0.8rem 0.8rem;
+}
+.boxWhiteContent.visible{
+    overflow:visible;
+}
+
+.filtersMap h2{
+    font-weight: 500;
+    color: #636363;
+    padding-right: 1rem !important;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.314rem;
+    margin: 0px 0 15px 0;
+    display: inline-block;
+}
+
+@media (max-width:767px){
+    .filtersMap .form-floating{
+        margin-bottom: 15px;
+    }
+}

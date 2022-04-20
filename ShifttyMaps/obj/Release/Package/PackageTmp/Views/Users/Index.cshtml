@@ -1,0 +1,91 @@
+﻿@using ShifttyMaps.Utility; 
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<article class="article" style="">
+    <div class="row content-header">
+
+        <div class="col-12 content-header-left">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content-header-title">
+                        <h2>Users</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+ 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="boxWhiteContent visible">
+                @if (Convert.ToInt32(Session["roleId"]) == Convert.ToInt32(EnumUtil.UserTypes.SuperAdmin) || Convert.ToInt32(Session["roleId"]) == Convert.ToInt32(EnumUtil.UserTypes.Admin))
+                {
+                    <a href="#home" data-bs-toggle="modal" data-bs-target="#modalAdd" class="btn btn-theme btnPosition" onclick="AddUserClick();">Add New</a>
+                }
+                <div id="tbl_users"></div>
+            </div>
+        </div>
+    </div> <!-- Add User --> <!-- Modal -->
+    <div class="modal fade" id="modalAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <h5 class="modal-title" id="staticBackdropLabel"><i data-feather="user-plus"></i> <span>User Details</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="txtFirstName" placeholder="name@example.com" />
+                        <label for="floatingInput">First name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="txtLastName" placeholder="name@example.com" />
+                        <label for="floatingInput">Last name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                         <input type="text" class="form-control" onfocusout="chkEmail();" id="txtEmail" placeholder="name@example.com" />
+                        <label for="floatingInput">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="js-example-placeholder-single js-states form-control" name="roleid" data-placeholder="Select Usertype" id="ddlRoleAdd" onchange="GetSelectedValue(this)">
+                            <option value="">Select User Type</option>
+                            @if (Convert.ToInt32(Session["roleId"]) == Convert.ToInt32(EnumUtil.UserTypes.SuperAdmin))
+                            {
+                                <option value="2">Admin</option>
+                                <option value="3">User</option>
+                            }
+                            else if (Convert.ToInt32(Session["roleId"]) == Convert.ToInt32(EnumUtil.UserTypes.Admin))
+                            {
+                                <option value="3">User</option>
+                            }
+                        </select>
+                        <label for="floatingSelect">User type</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
+                    <input type="submit" value="Create" style="display:none;" class="btn btn-theme" id="btnAdd" onclick="SaveUser();" />
+                    <input type="submit" value="Update" style="display:none;" class="btn btn-theme" id="btnUpdate" onclick="UpdateUserProfile();" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</article>
+<script src="~/Js/Users/Index.js"></script>

@@ -1,0 +1,135 @@
+﻿@model ShifttyMaps.Models.Users
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<article class="article">
+    <div class="row content-header">
+        <div class="col-12 content-header-left">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content-header-title">
+                        <h2>Account Settings</h2>
+                    </div>
+                    <nav class="breadCr"
+                         style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+                         aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="dashboard2.html"><i data-feather="home"></i></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Account Settings</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills  me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home"
+                       role="tab" aria-controls="v-pills-home" aria-selected="true">
+                        <i data-feather="user"></i>
+                        <span>General</span>
+                    </a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile"
+                       role="tab" aria-controls="v-pills-profile" aria-selected="false">
+                        <i data-feather="lock"></i>
+                        <span>Change Password</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-9">
+            @if (TempData["IncorrectOldPassword"] != null)
+            {
+                <div class="alert alert-danger">
+                    <h4>@TempData["IncorrectOldPassword"]</h4>
+                </div>
+            }
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success">
+                    <h4>@TempData["Success"]</h4>
+                </div>
+            }
+
+            <div class="boxWhiteContent">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                         aria-labelledby="v-pills-profile-tab">
+                        @using (Html.BeginForm("ChangePassword", "Profile", FormMethod.Post, new { @class = "form mt-0", @id = "RegisterForm1", @placeholder = "name@example.com" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        @Html.EditorFor(model => model.oldPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "name@example.com", @type = "password" } })
+                                        <label for="floatingInput">Old Password</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "name@example.com", @type = "password" } })
+                                        <label for="floatingInput">New Password</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        @Html.EditorFor(model => model.repassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "name@example.com", @type = "password" } })
+                                        <label for="floatingInput">Retype New Password</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-theme">Update</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                         aria-labelledby="v-pills-home-tab">
+                        @using (Html.BeginForm("ChangePersonalInfo", "Profile", FormMethod.Post, new { @class = "form mt-0", @id = "RegisterForm", @placeholder = "name@example.com" }))
+                        {
+                            @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    @Html.EditorFor(model => model.firstname, new { htmlAttributes = new { @class = "form-control", @placeholder = "name@example.com" } })
+                                    <label for="floatingInput">First Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    @Html.EditorFor(model => model.lastname, new { htmlAttributes = new { @class = "form-control", @placeholder = "name@example.com" } })
+                                    <label for="floatingInput">Last Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @placeholder = "name@example.com", @readonly = "readonly" } })
+                                    <label for="floatingInput">Email</label>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-theme">Save Changes</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

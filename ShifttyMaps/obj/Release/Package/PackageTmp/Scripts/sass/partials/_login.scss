@@ -1,0 +1,252 @@
+.h-100vh {
+    height: 100vh;
+}
+
+.page-middle {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.page-signle {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.col {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+}
+
+.Login .p-5 {
+    padding: 1.5rem !important;
+}
+
+.card-group > .card:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.card-group > .card:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.card-group > .card + .card {
+    margin-left: 0;
+    border-left: 0;
+}
+
+.Login .p-4 {
+    padding: 1rem !important;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    position: relative;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    border: 1px solid #dbe2eb;
+    box-shadow: 0px 6px 8px rgba(4, 4, 7, 0.1);
+    border-radius: 8px;
+}
+
+.primary-color {
+    background-color: white;
+    color: #fff;
+}
+
+.box div {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border: 6px solid rgba(255, 255, 255, 0.2);
+}
+
+.title-card {
+    text-align: center;
+}
+
+.title-card h2 {
+    border-bottom: 1px solid #eee;
+}
+
+.title-card small {
+    color: #728096;
+    margin-top: 20px;
+    display: block;
+}
+
+.form {
+    margin-top: 30px;
+}
+
+.btn-theme {
+    background-color: #454545;
+    color: #fff;
+}
+
+.btn-theme:hover {
+    background-color: black;
+    color: #fff;
+}
+
+.form-check-input:checked {
+    background-color: #454545;
+    border-color: #454545;
+}
+
+.page-single-content {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.responsive-img img{
+    max-width: 100%;
+    width: auto;
+    height: 250px;
+    position: relative;
+    z-index: 99;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.form-check .form-check-label {
+    font-size: 14px;
+}
+
+.noAccount p a{
+    color: #454545;
+}
+
+.box div {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border: 6px solid #5047473d;
+}
+
+.card{
+    overflow: hidden;
+}
+
+.box div:nth-child(1) {
+    top: 12%;
+    left: 42%;
+    animation: animate 10s linear infinite;
+}
+.box div:nth-child(2) {
+    top: 70%;
+    left: 50%;
+    animation: animate 7s linear infinite;
+}
+.box div:nth-child(3) {
+    top: 17%;
+    left: 6%;
+    animation: animate 9s linear infinite;
+}
+.box div:nth-child(4) {
+    top: 20%;
+    left: 60%;
+    animation: animate 10s linear infinite;
+}
+.box div:nth-child(5) {
+    top: 67%;
+    left: 10%;
+    animation: animate 6s linear infinite;
+}
+.box div:nth-child(6) {
+    top: 80%;
+    left: 70%;
+    animation: animate 12s linear infinite;
+}
+.box div:nth-child(7) {
+    top: 60%;
+    left: 80%;
+    animation: animate 15s linear infinite;
+}
+.box div:nth-child(8) {
+    top: 32%;
+    left: 25%;
+    animation: animate 16s linear infinite;
+}
+.box div:nth-child(9) {
+    top: 90%;
+    left: 25%;
+    animation: animate 9s linear infinite;
+}
+.box div:nth-child(10) {
+    top: 20%;
+    left: 80%;
+    animation: animate 5s linear infinite;
+}
+
+@-webkit-keyframes animate {
+    0% {
+        -webkit-transform: scale(0) translateY(0) rotate(0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1.3) translateY(-90px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+em.error{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: none;
+    color: #f00;
+    font-size: 13px;
+}
+
+
+@media (max-width:767px){
+    .card-group > .card:first-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    .card-group > .card:last-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+}

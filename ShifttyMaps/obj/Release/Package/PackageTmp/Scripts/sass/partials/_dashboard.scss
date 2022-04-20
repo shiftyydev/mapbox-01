@@ -1,0 +1,977 @@
+.h-100vh {
+    height: 100vh;
+}
+
+.aside {
+    width: 260px;
+    background-color: #fff;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    height: 100%;
+    z-index: 99;
+    -webkit-box-shadow: 0 0 15px 0 rgba(34, 41, 47, 0.05);
+    box-shadow: 0 0 15px 0 rgba(34, 41, 47, 0.05);
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.asideHeader {
+    padding: 0.35rem 1rem 0.3rem 1.64rem;
+    position: relative;
+    text-align: left;
+}
+
+.asideHeader img {
+    width: 140px;
+}
+
+.aside .box div {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border: 6px solid #5047473d;
+}
+
+.MenuItems {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.MenuItems li a {
+    text-decoration: none;
+    color: #565360;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding: 10px 15px 10px 15px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.MenuItems li a:hover {
+    padding: 10px 15px 10px 25px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.MenuItems li a.active {
+    background: #f5f5f5;
+    border-radius: 6px;
+    color: #454545;
+}
+
+.MenuAside {
+    padding: 15px;
+    position: relative;
+    z-index: 999;
+}
+
+.MenuItems li a svg {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1.1rem;
+}
+
+.MenuItems li a span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.aside .accordion-button {
+    padding: 10px 15px 10px 15px;
+}
+
+.aside .accordion-header {
+    margin-bottom: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: #565360;
+}
+
+.accordion-header svg {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1.1rem;
+}
+
+.accordion-header span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.SubMenu ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 8px;
+}
+
+.current .SubMenu {
+    display: block;
+}
+
+.SubMenu {
+    display: none;
+}
+
+.SubMenu ul li a svg {
+    font-size: 11px;
+    height: 11px;
+    width: 11px;
+    margin-right: 1.4rem;
+}
+
+.MenuItems li.current a.dropdown-toggle {
+    background: #f5f5f5;
+    border-radius: 6px;
+}
+
+.current .dropdown-toggle::after {
+    transform: rotate(-180deg);
+}
+
+.dropdown-toggle::after {
+    border: none;
+    content: "keyboard_arrow_down";
+    font-family: "Material Icons";
+    font-size: 18px;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.accordion__body svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 1.2rem !important;
+}
+
+.accordion__body ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px 0px 0px 6px;
+}
+
+.accordion__head::after {
+    border: none;
+    content: "keyboard_arrow_down";
+    font-family: "Material Icons";
+    font-size: 18px;
+    position: absolute;
+    right: 11px;
+    top: 11px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.opened .accordion__head::after {
+    transform: rotate(-180deg);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.mode-accordion.opened {
+    background: #f5f5f5;
+    border-radius: 6px;
+}
+
+.aside hr {
+    margin: 0;
+    background-color: #f0eff1;
+}
+
+.AsideFooter {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    max-width: 260px;
+    right: 0px;
+    background-color: #fff;
+    padding: 13px;
+    border-top: 1px solid rgba(240, 239, 241, 0.9);
+}
+
+.AsideFooter p {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+.MenuAside {
+    height: calc(100% - 137px);
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 260px;
+    top: 91px;
+}
+
+.mCS-minimal.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.2);
+    filter: "alpha(opacity=20)";
+    -ms-filter: "alpha(opacity=20)";
+}
+
+.article {
+    margin-left: 260px;
+    padding: 7.75rem 2rem 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.NavArticle {
+    position: fixed;
+    z-index: 12;
+    left: 260px;
+    right: 0;
+    top: 0;
+    background: rgba(239, 238, 240, 0.9);
+    padding: 1.3rem 2rem 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.boxWhite {
+    padding: 0.8rem 1rem;
+    background: #fff;
+    position: relative;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    min-height: calc(100% - 3.35rem);
+    border-radius: 0.428rem;
+    -webkit-box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+}
+
+.text-right {
+    text-align: right;
+}
+
+.titlePage a {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 40px;
+}
+
+.titlePage h2 {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.FlexAlign {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.FlexAlign ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.FlexAlign ul li {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 5px;
+}
+
+.FlexAlign ul li:last-child {
+    padding-right: 0px;
+}
+
+.profileImage {
+    border: none;
+    background: none;
+    position: relative;
+    padding-right: 0;
+}
+
+.profileImage img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+button:focus {
+    outline: none;
+    outline: -webkit-focus-ring-color auto none;
+}
+
+.profileImage img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.profileImage span {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    color: #6e6b7b;
+    font-weight: 600;
+    line-height: 18px;
+    margin-right: 6px;
+}
+
+.profileImage span small {
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.FlexAlign ul li a {
+    color: #6e6b7b;
+    line-height: 22px;
+}
+
+.FlexAlign ul li {
+    position: relative;
+    min-height: 42px;
+    line-height: 42px;
+}
+
+.FlexAlign ul li span.badge {
+    position: absolute;
+    background: #ea5455;
+    border-radius: 50%;
+    right: -4px;
+    top: 0px;
+    font-size: 11px;
+}
+
+.topFix {
+    top: 15px !important;
+    border-radius: 0.358rem;
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-box-shadow: 0 5px 25px rgba(34, 41, 47, 0.1);
+    box-shadow: 0 5px 25px rgba(34, 41, 47, 0.1);
+}
+
+.topFix2 {
+    top: 28px !important;
+    border-radius: 0.358rem;
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-box-shadow: 0 5px 25px rgba(34, 41, 47, 0.1);
+    box-shadow: 0 5px 25px rgba(34, 41, 47, 0.1);
+    min-width: 420px;
+}
+
+.topFix svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.5rem;
+}
+
+.dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #454545;
+}
+
+.headNotifications {
+    padding: 10px 15px 0px;
+    border-bottom: 1px solid #f0eff1;
+}
+
+.FlexAlign .topFix2 .headNotifications .badge {
+    position: relative;
+    right: 0;
+    top: -9px;
+    border-radius: 5px;
+}
+
+.headNotifications h4 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.notificationsBlock {
+    max-height: 250px;
+    overflow: hidden;
+}
+
+.notificationsBlock span.proImage img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.notificationsBlock span.NotofocationData {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.topFix2 .dropdown-item {
+    border-bottom: 1px solid #f0eff1;
+    padding: 0.75rem 1rem;
+}
+
+.notificationsBlock span.NotofocationData small {
+    display: block;
+    font-size: 12px;
+}
+
+.boxWhiteContentGreen {
+    padding: 0.8rem 1rem;
+    position: relative;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: #454545;
+    margin-bottom: 2rem;
+    -webkit-box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+    box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+    border-radius: 0.428rem;
+}
+
+.boxWhiteContent {
+    padding: 0.8rem 1rem;
+    position: relative;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: #fff;
+    margin-bottom: 2rem;
+    -webkit-box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+    box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+    border-radius: 0.428rem;
+    overflow: hidden;
+}
+
+.boxWhiteContent h3 {
+    font-weight: 600;
+    font-size: 24px;
+    color: #fff;
+}
+
+.boxWhiteContentGreen h3 {
+    font-weight: 600;
+    font-size: 24px;
+    color: #fff;
+}
+
+.minHeight {
+    min-height: 154px;
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.article a {
+    text-decoration: none;
+    outline: none;
+}
+
+.minHeight svg {
+    width: 150px;
+    height: 110px;
+    color: #fff;
+    opacity: 0.1;
+    position: absolute;
+    top: auto;
+    right: 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    zoom: 1;
+    bottom: auto;
+}
+
+.minHeight:hover svg {
+    width: 170px;
+    height: 130px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.minHeight p {
+    color: #fff;
+    position: relative;
+    z-index: 9;
+}
+
+.MenuToggle {
+    cursor: pointer;
+}
+
+a {
+    color: #454545;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.AsideClose .aside {
+    width: 80px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .MenuAside {
+    width: 80px;
+    overflow: initial;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .MenuItems li a span {
+    position: absolute;
+    left: -500px;
+    top: 7px;
+    background: #fff;
+    padding: 6px 25px;
+    border-radius: 5px;
+    z-index: 99;
+    width: 180px;
+    -webkit-box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+    box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .accordion__head::after {
+    display: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .AsideFooter {
+    display: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .MenuItems li a {
+    padding: 10px 15px 10px 13px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .asideHeader {
+    padding: 0.35rem 1rem 0.3rem 0.74rem;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .article {
+    margin-left: 80px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .NavArticle {
+    left: 80px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .normal {
+    display: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .closeSide {
+    display: block;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.closeSide {
+    display: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .asideHeader img {
+    width: 42px;
+    margin: 0 auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.AsideClose .MenuItems li {
+    position: relative;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .MenuItems li:hover span {
+    left: 60px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.leftalign {
+    display: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .leftalign {
+    display: inline-block;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.AsideClose .rightalign {
+    display: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.minHeight2 {
+    min-height: 154px;
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.minHeight2 svg {
+    color: #000;
+    width: 50px;
+    height: 50px;
+    opacity: 0.1;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.minHeight2 p {
+    margin-bottom: 0;
+    margin-top: 15px;
+}
+
+text {
+    font-family: "Roboto", sans-serif !important;
+}
+
+.boxWhiteContent h4 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 1.285rem;
+    margin-bottom: 0px;
+}
+
+.boxWhiteContent h5 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #b9b9c3;
+}
+
+.boxWhiteContent.colorOne {
+    // background: url(../images/visitors.png) no-repeat center top;
+    // background-size: cover;
+    background: #00d4bd;
+}
+
+.boxWhiteContent.colortwo {
+    // background: url(../images/scans.png) no-repeat center top;
+    // background-size: cover;
+    background: #826bf8;
+}
+
+.boxWhiteContent.colorthree {
+    // background: url(../images/meals.png) no-repeat center top;
+    // background-size: cover;
+    background: #ffa1a1;
+}
+
+.boxWhiteContent.colorfour {
+    // background: url(../images/checkin.png) no-repeat center top;
+    // background-size: cover;
+    background: #ea5455;
+}
+
+.boxWhiteContent.colorfive {
+    // background: url(../images/checkin.png) no-repeat center top;
+    // background-size: cover;
+    background: #28c76f;
+}
+
+.boxWhiteContent.colorsix {
+    // background: url(../images/checkin.png) no-repeat center top;
+    // background-size: cover;
+    background: #26d6eb;
+}
+
+.arrowclass {
+    padding-right:20px;
+}
+
+.dropdown-toggle.arrowclass::after {
+    top: 0;
+}
+
+.content-header-left{
+    margin-bottom: 1.5rem!important;
+}
+
+.content-header-title{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.content-header-title h2{
+    border-right: 1px solid #d6dce1;
+    font-weight: 500;
+    color: #636363;
+    padding-right: 1rem!important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.714rem;
+    margin: 0px;
+    display: inline-block;
+}
+
+.breadCr{
+    display: inline-block;
+    vertical-align: middle;
+    padding: .3rem 1rem;
+}
+
+.breadcrumb{
+    margin: 0px
+}
+
+.breadcrumb li{
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.breadcrumb li svg{
+    width: 16px;
+    height: 16px;
+}
+
+.content-header{
+    margin-top: -10px;
+}
+
+@media (max-width: 991px) {
+    .boxWhiteContent h3 {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        overflow-x: hidden;
+    }
+    .aside {
+        left: -260px;
+    }
+    .MenuAside {
+        left: -260px;
+    }
+    .article {
+        margin-left: 0px;
+    }
+    .NavArticle {
+        left: 0px;
+    }
+    .article {
+        padding: 6.75rem 1rem 0;
+    }
+    .NavArticle {
+        padding: 1.3rem 1rem 0;
+    }
+    .titlePage h2 {
+        font-size: 19px;
+        margin-bottom: 0;
+    }
+    .profileImage span {
+        display: none;
+    }
+    .titlePage {
+        padding-top: 7px;
+    }
+    .topFix2 {
+        min-width: 100%;
+        left: 19px !important;
+    }
+    .AsideFooter {
+        display: none;
+    }
+    .boxWhiteContentGreen {
+        margin-bottom: 1rem;
+    }
+    .boxWhiteContent {
+        margin-bottom: 1rem;
+    }
+    .AsideClose .aside {
+        width: 260px;
+        left: 0;
+    }
+    .AsideClose .MenuAside {
+        width: 260px;
+        left: 0;
+    }
+    .AsideClose .MenuItems li a span {
+        position: relative;
+        left: 0;
+        top: 0;
+        background: none;
+        padding: 0;
+        border-radius: 0;
+        z-index: 99;
+        width: auto;
+        box-shadow: none;
+    }
+    .AsideClose .normal {
+        display: block;
+    }
+    .AsideClose .closeSide {
+        display: none;
+    }
+    .AsideClose .asideHeader img {
+        width: 140px;
+    }
+    .AsideClose .article {
+        margin-left: 0px;
+        transform: translate(70%, 0px);
+    }
+    .AsideClose .NavArticle {
+        left: 0px;
+        transform: translate(41.1%, 0px);
+    }
+    .apexcharts-canvas {
+        width: 100% !important;
+    }
+    .apexcharts-canvas svg {
+        width: 100% !important;
+    }
+    .AsideClose .MenuItems li:hover span {
+        left: 0px;
+    }
+    .AsideClose .MenuItems li a:hover {
+        padding: 10px 15px 10px 25px;
+    }
+}

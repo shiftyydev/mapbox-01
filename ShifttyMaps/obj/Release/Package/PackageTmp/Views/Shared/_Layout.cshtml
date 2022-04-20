@@ -1,0 +1,351 @@
+﻿@using ShifttyMaps.Utility
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Images/ShiftyyLogo.png">
+    <title>Shiftty | @ViewBag.Title</title>
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" type="text/css" href="~/NewDesignFiles/css/css/style.css">
+    <link href="~/NewDesignFiles/bootstrap-toastr/toastr.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link href="~/Content/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/ExternalDatatableFiles/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/ExternalDatatableFiles/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/ExternalDatatableFiles/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+    <style>
+        #loaderDiv {
+            position: fixed;
+            align-items: center;
+            background-color: black;
+            opacity: 0.5;
+            top: 0;
+            left: 0;
+            height: 100vh; /* to make it responsive */
+            width: 100vw; /* to make it responsive */
+            overflow: hidden; /*to remove scrollbars */
+            z-index: 99999; /*to make it appear on topmost part of the page */
+            display: none; /*to make it visible only on fadeIn() function */
+        }
+
+        table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control::after {
+            display: none;
+        }
+    </style>
+    @RenderSection("style", false)
+</head>
+
+<body class="h-100vh mapPage   @((Convert.ToString(Session["ActiveTab"]) != "8") ? "AsideClose AsideCloseFull Alioye" : "")  @(Convert.ToString(Session["ActiveTab"]) == "8" ? "boundryPage" : "")  noMenu">
+    <div id="loaderDiv">
+        <center> <img src="~/Images/Loader.gif" /></center>
+    </div>
+    <aside class="aside" style="z-index:1000;">
+      
+        <div class="asideHeader">
+            <div class="normal">
+                <center>
+                    <img src="~/Images/ShiftyyLogo.png" alt="">
+                </center>
+            </div>
+            <div class="closeSide">
+                <center>
+                    <img src="~/Images/ShiftyyLogo.png" style="width: 70px;" alt="">
+                </center>
+            </div>
+        </div>
+        <hr>
+        <div class="text-right p-adjust">
+            <!-- <a href="#." class="menuBtnShow js-tooltip-hover-bottom12"><i data-feather="arrow-left"></i></a> -->
+            <a href="#." class="FilterBtnShow js-tooltip-hover-bottom13">
+                <i data-feather="arrow-left"></i>
+            </a>
+        </div>
+        <div class="FilterBox">
+            <div class="FilterBody">
+                @if (Convert.ToInt32(Session["roleId"]) == Convert.ToInt32(EnumUtil.UserTypes.SuperAdmin) && (Convert.ToString(Session["ActiveTab"]) == "8" || Convert.ToString(Session["ActiveTab"]) == "7"))
+                {
+                    <h5>Company</h5>
+                    <div id="drpCompany" class="demo">
+
+                    </div>
+                    <br />
+                } 
+                <div id="liTree" class="demo">
+
+                </div>
+            </div>
+        </div>
+        <div class="MenuAside">
+            <ul class="MenuItems">
+                <li>
+                    <a class="@(Convert.ToString(Session["ActiveTab"]) == "1" ? "active" : "")" href="/Map/Index">
+                        <i data-feather="compass"></i>
+                        <span>Map</span>
+                    </a>
+                </li>
+                <li><a class="@(Convert.ToString(Session["ActiveTab"]) == "3" ? "active" : "")" href="/Vehicle/Index"><i data-feather="truck"></i> <span>Vehicles</span></a></li>
+                @if (Convert.ToInt32(Session["roleId"]) == 1 || Convert.ToInt32(Session["roleId"]) == 2)
+                {
+            <li>
+                <a class="@(Convert.ToString(Session["ActiveTab"]) == "2" ? "active" : "")" href="/Users/Index">
+                    <i data-feather="user"></i>
+                    <span>Users</span>
+                </a>
+            </li>}
+            </ul>
+        </div>
+    </aside>
+    <div class="NavArticle" style="background-color: transparent;z-index:1000;">
+        <section class="boxWhite ControlsBlock mb-1">
+            <div class="row justify-content-center">
+                <div class="col-4 col-sm-4 titlePage">
+                    <a class="MenuToggle MenuTog2">
+                        <i data-feather="align-right" class="rightalign"></i> <i data-feather="align-left" class="leftalign"></i>
+                    </a>
+                    @if (Convert.ToString(Session["ActiveTab"]) == "1") 
+                    {
+                        <h2>Map</h2>
+                    } 
+                    @if (Convert.ToString(Session["ActiveTab"]) == "2") 
+                    {
+                        <h2>Users</h2>
+                    }
+                </div>
+                <div class="col-4 col-sm-4 d-none d-sm-block">
+                    @if (Convert.ToString(Session["ActiveTab"]) == "1") //User
+                    {
+                        @*<div class="searchBlock">
+                            <input type="text" id="here_api_search_input" class="form-control" placeholder="Please Type Your Adress">
+                            <i data-feather="search"></i>
+                        </div>*@
+                    }
+                    <div id="alert_dialog" class="alert alert-danger" style="position:absolute; margin-top:200px; display:none">
+
+                    </div>
+                </div>
+                <div class="col-8 col-sm-4 text-right">
+                    <div class="FlexAlign">
+                        <ul>
+                          
+                            <li>
+                                <div class="dropdown">
+                                    <button class="profileImage" type="button" id="dropdownMenuButton"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span>
+                                            @Session["UserName"]
+                                            @if (Convert.ToInt32(Session["roleId"]) == 1)
+                                            {
+                                                <small>Super Admin</small> 
+                                            }
+                                            else if (Convert.ToInt32(Session["roleId"]) == 2)
+                                            {
+                                                <small>Admin</small> 
+                                            }
+                                            else if (Convert.ToInt32(Session["roleId"]) == 3)
+                                            {
+                                                <small>User</small> 
+                                            }
+                                        </span>
+                                        <img src="~/NewDesignFiles/images/UserIcon.png" alt="">
+                                    </button>
+                                    <div class="dropdown-menu topFix dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                        @if (Convert.ToInt32(Session["roleId"]) != 1)
+                                        {
+                                            <a class="dropdown-item" href="/Profile/index"><i data-feather="user"></i> Profile</a>
+                                        }
+                                          <a class="dropdown-item" href="/Login/Index"><i data-feather="log-out"></i> Logout</a>
+                                                                </div>
+                                </div>
+                            </li>
+                      
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <input type="hidden" id="hdnAppPath" value="@AppSetting.AppPath" />
+                    <input type="hidden" id="hdnSessionTimeout" value="@AppSetting.SessionExpireTime" />
+                    <input type="hidden" id="hdnSessionExpNotice" value="@AppSetting.SessionExpNotice" />
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <aside class="Rightaside">
+        <div class="titleFilters">
+            <h2>RL525</h2>
+            <i data-feather="x" class="CloseFilterDrawer" title="Close"></i>
+        </div>
+        <div class="ItemData">
+            <div class="row borderData">
+                <div class="col-6"><i data-feather="user"></i> <span>Driver Name</span></div>
+                <div class="col-6 text-right">Jean Charles</div>
+            </div>
+            <div class="row borderData">
+                <div class="col-6"><i data-feather="trello"></i> <span>Truck Serial Number</span></div>
+                <div class="col-6 text-right">154802734</div>
+            </div>
+            <div class="row borderData">
+                <div class="col-6"><i data-feather="briefcase"></i> <span>Company</span></div>
+                <div class="col-6 text-right">Waste Pro USA</div>
+            </div>
+            <div class="row borderData">
+                <div class="col-6"><i data-feather="columns"></i> <span>Division</span></div>
+                <div class="col-6 text-right">Orlando (100)</div>
+            </div>
+            <div class="row borderData">
+                <div class="col-6"><i data-feather="activity"></i> <span>Route</span></div>
+                <div class="col-6 text-right">8ORCO25</div>
+            </div>
+            <div class="row borderData">
+                <div class="col-6"><i data-feather="life-buoy"></i> <span>Service Type</span></div>
+                <div class="col-6 text-right">YARD WASTE</div>
+            </div>
+            <div class="row borderData">
+                <div class="col-6"><i data-feather="map"></i> <span>Last known location</span></div>
+                <div class="col-6 text-right">
+                    <span>
+                        5424, Split Pine Court, Hidden Estates, Dr. Phillips, Orange County,
+                        Florida, 32819, United States
+                    </span>
+                </div>
+            </div>
+            <div class="row borderData">
+                <div class="col-6"><i data-feather="smartphone"></i> <span>Last Contact on</span></div>
+                <div class="col-6 text-right">undefined</div>
+            </div>
+            <div class="row borderData">
+                <div class="col-4"><i data-feather="map-pin"></i> <span>Lat Long</span></div>
+                <div class="col-8 text-right">28.48518572 -81.49096948</div>
+            </div>
+        </div>
+    </aside>
+
+
+    <!-- jquery library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!-- Ripple Effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="~/NewDesignFiles/js/jquery-waves.js"></script>
+    <!-- JavaScript Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
+    <!-- Forms Validations -->
+    <script type="text/javascript" src="~/NewDesignFiles/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/NewDesignFiles/js/validations.js"></script>
+
+    <!-- Aside Accordion -->
+    <script src="~/NewDesignFiles/js/jquery.expander.min.js"></script>
+    <!-- custom scrollbar plugin -->
+    <script src="~/NewDesignFiles/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!-- Select2 Js -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Datatable Js -->
+    <script src="~/ExternalDatatableFiles/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/ExternalDatatableFiles/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/ExternalDatatableFiles/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/ExternalDatatableFiles/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/ExternalDatatableFiles/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/ExternalDatatableFiles/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/ExternalDatatableFiles/jszip/jszip.min.js"></script>
+    <script src="~/ExternalDatatableFiles/pdfmake/pdfmake.min.js"></script>
+    <script src="~/ExternalDatatableFiles/pdfmake/vfs_fonts.js"></script>
+    <script src="~/ExternalDatatableFiles/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/ExternalDatatableFiles/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/ExternalDatatableFiles/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+    <script src="~/Content/bootstrap-sweetalert/sweetalert.min.js"></script>
+    <script src="~/NewDesignFiles/bootstrap-toastr/toastr.min.js"></script>
+    <!-- Tooltip Scripts -->
+    <script src="~/NewDesignFiles/js/jquery.tooltip.js"></script>
+    <script src="~/NewDesignFiles/js/main.js"></script>
+    <!-- Tree js files -->
+    <script src="~/NewDesignFiles/js/bstreeview.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="~/NewDesignFiles/js/custom.js"></script>
+    <!-- Feather Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+    <script src="~/Scripts/underscore-min.js"></script>
+    <script src="~/Scripts/common.js"></script>
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/material.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/spiritedaway.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
+    <script>feather.replace()</script>
+    <script>$(".MenuTog2").click(function () {
+        $("body").toggleClass("openMenu2");
+    });</script>
+    <script>
+    var SessionTimer;
+    $(document).ready(function () {
+        setInterval(fnSessionRun, 1000);
+        $.ajax({
+            type: "POST",
+            url: '/Common/ChkSession/',
+            data: {},
+            success: function (data) {
+                if (data == "")
+                {
+                    var URL = "../Login/Index"
+                    window.open(URL, '_self');
+                }
+            }
+        });
+    });
+    function fnSessionRun() {
+        SessionTimer -= 1;
+        if (SessionTimer == 0) {
+            //window.location.href = '/Login/Index';
+            var URL = "../Login/Index"
+            window.open(URL, '_self');
+        }
+        if ($("#hdnSessionExpNotice").val() == SessionTimer) {
+            swal({
+                title: "Warning",
+                text: "Your session will expire in @AppSetting.SessionExpNotice seconds, Click Ok to remain logged in or click Cancel to log off. If you are logged off any changes will be lost.",
+                type: "warning",
+                allowOutsideClick: false,
+                showConfirmButton: true,
+                showCancelButton: true,
+                confirmButtonClass: "btn-success",
+                cancelButtonClass: "btn-danger",
+                confirmButtonText: "Yes",
+                cancelButtonText: "No",
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            url: '/Common/ResetSession/',
+                            contentType: 'application/json',
+                            dataType: 'json',
+                            data: {},
+                            success: function (data) {
+                                $("#hdnSessionTimeout").val(parseInt(data));
+                                //$("#SessionExpNotice").modal('hide');
+                            }
+                        });
+                    }
+                });
+           // swal("Alert", "Your session will expire in @AppSetting.SessionExpNotice seconds, Click Ok to remain logged in or click Cancel to log off. If you are logged off any changes will be lost.  ", "warning");
+        }
+    }
+    $(document).ajaxStart(function (event, jqxhr, settings) {
+        SessionTimer = parseInt($("#hdnSessionTimeout").val());
+    });
+    </script>
+    @RenderBody()
+    @RenderSection("script", false)
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ShifttyMaps.Models.Users>
+@using ShifttyMaps.Utility;
+<table id="tblUsersList" class="table dt-responsive nowrap table-responsive">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Password</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    <span class="Username">
+                        <a href="#home">
+                            @item.firstname
+                        </a>
+                    </span>
+                </td>
+                <td>
+                    <span class="userImg"></span> <span class="Username">
+                        <a href="#home">
+                            @item.lastname
+                        </a>
+                    </span>
+                </td>
+                <td> @item.email</td>
+                <td>
+                    <i data-feather="server" class="adminIco"></i>
+                    @if (item.roleid == 2)
+                    {
+                        <label>Admin</label> 
+                    }
+                    else if (item.roleid == 3)
+                    {
+                        <label>User</label> 
+                    }
+                </td>
+                <td>
+                    <span class="maxWidth">
+                         <button class="btn btn-theme" onclick="SendPassword('@item.firstname', '@item.lastname', '@item.email', '@item.password')">Resend Password</button>
+
+                    </span>
+                </td>
+                <td align="center">
+                    <a href="#home" id="dropdownMenuButton" data-bs-toggle="dropdown" class="btn btn-theme" aria-expanded="false">
+                        <i data-feather="more-vertical">Actions</i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" onclick="Edit(@item.userid)"><i data-feather="edit"></i> Update</a>
+                        <a class="dropdown-item" href="#home" onclick="Delete('@item.userid')"><i data-feather="trash"></i> Delete</a>
+                    </div>
+                </td>
+            </tr>
+}
+</table>
+
