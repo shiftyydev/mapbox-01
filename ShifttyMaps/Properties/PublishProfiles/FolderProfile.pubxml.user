@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\Publish</_PublishTargetUrl>
-    <History>True|2022-04-17T16:38:18.2362024Z;True|2022-04-17T02:10:03.3617679+05:00;True|2022-04-09T17:35:57.8699172+05:00;True|2022-04-09T16:46:06.4043628+05:00;True|2022-04-09T16:42:58.9592537+05:00;</History>
+    <History>True|2022-04-28T18:56:18.9054806Z;True|2022-04-24T23:14:00.1183355+05:00;True|2022-04-21T02:28:41.0158366+05:00;True|2022-04-17T21:38:18.2362024+05:00;True|2022-04-17T02:10:03.3617679+05:00;True|2022-04-09T17:35:57.8699172+05:00;True|2022-04-09T16:46:06.4043628+05:00;True|2022-04-09T16:42:58.9592537+05:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Basemaps/Basemap.png">
@@ -219,10 +219,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/08/2018 12:18:16</publishTime>
     </File>
     <File Include="bin/ShifttyMaps.dll">
-      <publishTime>04/17/2022 21:38:16</publishTime>
+      <publishTime>04/28/2022 23:56:11</publishTime>
     </File>
     <File Include="bin/ShifttyMaps.pdb">
-      <publishTime>04/17/2022 21:38:16</publishTime>
+      <publishTime>04/28/2022 23:56:11</publishTime>
     </File>
     <File Include="bin/System.Buffers.dll">
       <publishTime>02/19/2020 15:05:18</publishTime>
@@ -654,118 +654,223 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/09/2022 00:43:31</publishTime>
     </File>
     <File Include="Images/customerBoundary.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/customerBoundaryNo.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/E - Copy.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/E.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/GrrenPin.jpg">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/LiveLocation.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/LiveLocationNo.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/Loader.gif">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/marker.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/N - Copy.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/N.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/NE - Copy.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/NE.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/NotificationIcon.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/NW - Copy.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/NW.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/OfflineDot.gif">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/OnlineDot.gif">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/RedPin.jpg">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/RouteStop.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/S - Copy.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/S.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/SE - Copy.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/SE.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/ShiftyyLogo.png">
-      <publishTime>04/09/2022 01:02:57</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/StillTruck.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/Stop.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/StopLiveLocation.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/StopOld.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/SW - Copy.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/SW.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/TruckImage.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/W - Copy.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/W.png">
-      <publishTime>04/09/2022 01:01:15</publishTime>
+      <publishTime>04/27/2022 02:45:29</publishTime>
     </File>
     <File Include="Images/Yellow.png">
+      <publishTime>04/27/2022 02:45:29</publishTime>
+    </File>
+    <File Include="ImagesOld/customerBoundary.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/customerBoundaryNo.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/E - Copy.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/E.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/GrrenPin.jpg">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/LiveLocation.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/LiveLocationNo.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/Loader.gif">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/marker.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/N - Copy.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/N.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/NE - Copy.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/NE.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/NotificationIcon.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/NW - Copy.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/NW.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/OfflineDot.gif">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/OnlineDot.gif">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/RedPin.jpg">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/RouteStop.png">
+      <publishTime>04/19/2022 09:18:53</publishTime>
+    </File>
+    <File Include="ImagesOld/S - Copy.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/S.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/SE - Copy.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/SE.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/ShiftyyLogo.png">
+      <publishTime>04/09/2022 01:02:57</publishTime>
+    </File>
+    <File Include="ImagesOld/StillTruck.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/Stop.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/StopLiveLocation.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/StopOld.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/SW - Copy.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/SW.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/TruckImage.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/W - Copy.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/W.png">
+      <publishTime>04/09/2022 01:01:15</publishTime>
+    </File>
+    <File Include="ImagesOld/Yellow.png">
       <publishTime>04/09/2022 01:01:15</publishTime>
     </File>
     <File Include="Js/Map/Index.js">
-      <publishTime>04/17/2022 00:35:55</publishTime>
+      <publishTime>04/28/2022 23:55:28</publishTime>
     </File>
     <File Include="Js/Users/Index.js">
       <publishTime>04/17/2022 01:19:19</publishTime>
     </File>
     <File Include="Js/Vehicles/Index.js">
-      <publishTime>04/16/2022 23:13:35</publishTime>
+      <publishTime>04/26/2022 21:55:42</publishTime>
     </File>
     <File Include="NewDesignFiles/.DS_Store">
       <publishTime>04/09/2022 00:53:03</publishTime>
@@ -1167,10 +1272,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/09/2022 15:46:28</publishTime>
     </File>
     <File Include="Views/Vehicle/Index.cshtml">
-      <publishTime>04/16/2022 23:13:57</publishTime>
+      <publishTime>04/26/2022 21:43:05</publishTime>
     </File>
     <File Include="Views/Vehicle/_LoadVehicle.cshtml">
-      <publishTime>04/16/2022 23:13:00</publishTime>
+      <publishTime>04/26/2022 21:49:06</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>04/09/2022 00:43:31</publishTime>

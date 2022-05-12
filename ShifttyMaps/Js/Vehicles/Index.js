@@ -24,11 +24,13 @@ function AddVehicles() {
     $('#btnUpdate').hide();
     $("#txtName").val('');
     $("#txtVehicleId").val('');
+    $("#txtAPIKey").val('');
 
 }
 function SaveVehicle() {
     var Name = $("#txtName").val();
     var VehicleId = $("#txtVehicleId").val();
+    var APIKey = $("#txtAPIKey").val();
     if (Name == '') {
         swal("Enter Name", "", "error");
         return;
@@ -37,13 +39,18 @@ function SaveVehicle() {
         swal("Enter Vehicle Id", "", "error");
         return;
     }
+    if (APIKey == '') {
+        swal("Enter API Key", "", "error");
+        return;
+    }
     $('#loaderDiv').show();
     $.ajax({
         type: "POST",
         url: "/Vehicle/CreateVehicle",
         data: {
             Name: Name,
-            VehicleId: VehicleId
+            VehicleId: VehicleId,
+            APIKey: APIKey
         },
         success: function (res) {
             if (res == "true") {
@@ -99,8 +106,10 @@ function Edit(Id) {
             editId = Id;
             var name = res["name"];
             var vehicle_id = res["vehicle_id"];
+            var api_key = res["api_key"];
             $("#txtName").val(name);
             $("#txtVehicleId").val(vehicle_id);
+            $("#txtAPIKey").val(api_key);
             $("#staticBackdrop").modal("show");
         },
         error: function (err) {
@@ -111,12 +120,17 @@ function Edit(Id) {
 function UpdateVehicle() {
     var Name = $("#txtName").val();
     var VehicleId = $("#txtVehicleId").val();
+    var APIKey = $("#txtAPIKey").val();
     if (Name == '') {
         swal("Enter Name", "", "error");
         return;
     }
     if (VehicleId == '') {
         swal("Enter Vehicle Id", "", "error");
+        return;
+    }
+    if (APIKey == '') {
+        swal("Enter API Key", "", "error");
         return;
     }
     $('#loaderDiv').show();
@@ -126,7 +140,8 @@ function UpdateVehicle() {
         data: {
             editId: editId,
             Name: Name,
-            VehicleId: VehicleId
+            VehicleId: VehicleId,
+            APIKey: APIKey
         },
         success: function (res) {
             if (res == "true") {
@@ -137,6 +152,7 @@ function UpdateVehicle() {
             }
             $("#txtName").val('');
             $("#txtVehicleId").val('');
+            $("#txtAPIKey").val('');
             $("#staticBackdrop").modal("hide");
             jQuery('#loaderDiv').fadeOut(1000);
             LoadVehicles();

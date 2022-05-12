@@ -27,7 +27,7 @@ namespace ShifttyMaps.Controllers
             return PartialView("~/Views/Vehicle/_LoadVehicle.cshtml", list);
         }
         [HttpPost]
-        public string CreateVehicle(string Name, string VehicleId)
+        public string CreateVehicle(string Name, string VehicleId,string APIKey)
         {
             string res = "false";
             try
@@ -36,6 +36,7 @@ namespace ShifttyMaps.Controllers
                 {
                     obj.name = Name;
                     obj.vehicle_id = VehicleId;
+                    obj.api_key = APIKey;
                     db.Vehicles.Add(obj);
                     db.SaveChanges();
                 }
@@ -71,15 +72,17 @@ namespace ShifttyMaps.Controllers
             Vehicles obj = db.Vehicles.Find(id);
             string name = obj.name;
             string vehicle_id = obj.vehicle_id;
+            string api_key = obj.api_key;
             return Json(new
             {
                 name,
-                vehicle_id
+                vehicle_id,
+                api_key
             }, JsonRequestBehavior.AllowGet);
 
         }
         [HttpPost]
-        public string UpdateVehicle(int editId, string Name, string VehicleId)
+        public string UpdateVehicle(int editId, string Name, string VehicleId,string APIKey)
         {
             string res = "false";
             try
@@ -87,6 +90,7 @@ namespace ShifttyMaps.Controllers
                 var result = db.Vehicles.Find(editId);
                 result.name = Name;
                 result.vehicle_id = VehicleId;
+                result.api_key = APIKey;
                 db.Entry(result).State = EntityState.Modified;
                 db.SaveChanges();
                 res = "true";

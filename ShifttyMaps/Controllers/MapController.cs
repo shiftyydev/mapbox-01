@@ -34,12 +34,12 @@ namespace ShifttyMaps.Controllers
             };
         }
         [HttpGet]
-        public async Task<JsonResult> GetRouteSplited(string FromDate, string ToDate, string VehicleId, string name)
+        public async Task<JsonResult> GetRouteSplited(string FromDate, string ToDate, string VehicleId, string name,string api_key)
         {
             using (var clientShiffty = new HttpClient())
             {
                 //string urlShiffty = "https://gps-api.shiftyy.com/objects/c48d2a62-52b4-11eb-8dcd-6fd375e1d7de/coordinates?version=2&from_datetime=2022-04-15T15:00:00Z&to_datetime=2022-04-15T18:00:00Z&limit=1000&api_key=Zlj5pAw8n4De5Edfzsb5EzEiyrpzoIJv";
-                string urlShiffty = "https://gps-api.shiftyy.com/objects/" + VehicleId + "/coordinates?version=2&from_datetime=" + FromDate + "&to_datetime=" + ToDate + "&limit=1000&api_key=Zlj5pAw8n4De5Edfzsb5EzEiyrpzoIJv";
+                string urlShiffty = "https://gps-api.shiftyy.com/objects/" + VehicleId + "/coordinates?version=2&from_datetime=" + FromDate + "&to_datetime=" + ToDate + "&limit=1000&api_key="+ api_key;
                 var JSONStringNewRoute = new StringBuilder();
                 JSONStringNewRoute.Append("{");
                 JSONStringNewRoute.Append("\"type\":");
@@ -66,6 +66,7 @@ namespace ShifttyMaps.Controllers
                         var obj = itemShiffty.object_id.Value;
                         var time = itemShiffty.datetime.Value;
                         var position = itemShiffty.position;
+                        var fuel_level = itemShiffty.inputs.calculated_inputs.fuel_level.Value;
                         var latitude = itemShiffty.position.latitude.Value;
                         var longitude = itemShiffty.position.longitude.Value;
                         var speed = itemShiffty.position.speed.Value;
@@ -104,7 +105,7 @@ namespace ShifttyMaps.Controllers
                             {
                                 directionNew = "RouteStop";
                             }
-                            JSONStringNewPoint.Append("{\"type\": \"Feature\", \"geometry\": {\"type\": \"Point\", \"coordinates\": [" + longitude + ", " + latitude + "]}, \"properties\": {  \"time\": \"" + d.ToString("dd/MMM/yyyy HH:mm:ss") + "\", \"speed\": \"" + speed + "\", \"idling\": " + idling_time + ", \"direction\": \"" + directionNew + "\"}},");
+                            JSONStringNewPoint.Append("{\"type\": \"Feature\", \"geometry\": {\"type\": \"Point\", \"coordinates\": [" + longitude + ", " + latitude + "]}, \"properties\": {  \"time\": \"" + d.ToString("dd/MMM/yyyy HH:mm:ss") + "\", \"speed\": \"" + speed + "\", \"idling\": " + idling_time + ", \"direction\": \"" + directionNew + "\", \"fuel_level\": \"" + fuel_level + "\"}},");
                         }
                     }
                 }

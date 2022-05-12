@@ -14,5 +14,6 @@ namespace ShifttyMaps.Models
         public int id { get; set; }
         public string name { get; set; }
         public string vehicle_id { get; set; }
+        public string api_key { get; set; }
     }
 }

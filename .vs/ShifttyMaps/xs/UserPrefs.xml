@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{577BBE39-5B47-4CE4-BF6A-F3C1A6A0C170}|">
+  <MonoDevelop.Ide.ItemProperties.ShifttyMaps PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ShifttyMaps" expanded="True">
+            <Node name="ShifttyMaps" expanded="True">
+              <Node name="References" selected="True" />
+              <Node name="ExternalDatatableFiles" expanded="True">
+                <Node name="datatables-searchpanes" expanded="True">
+                  <Node name="css" expanded="True" />
+                </Node>
+                <Node name="pdfmake" expanded="True" />
+              </Node>
+              <Node name="Scripts" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

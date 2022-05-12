@@ -30,6 +30,7 @@ var map = new mapboxgl.Map({
     center: [-96.8762766, 32.9565216],
     zoom: 12
 });
+map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 $.widget("custom.autocompleteHighlight", $.ui.autocomplete, {
     _renderItem: function (ul, item) {
         return $('<li style="z-index:1100">' + item.label + '</li>').appendTo(ul);
@@ -473,17 +474,209 @@ const pulsingDotGreen = {
         return true;
     }
 };
+const pulsingDotBlue = {
+    width: size,
+    height: size,
+    data: new Uint8Array(size * size * 4),
+
+    // When the layer is added to the map,
+    // get the rendering context for the map canvas.
+    onAdd: function () {
+        const canvas = document.createElement('canvas');
+        canvas.width = this.width;
+        canvas.height = this.height;
+        this.context = canvas.getContext('2d');
+    },
+
+    // Call once before every frame where the icon will be used.
+    render: function () {
+        const duration = 1000;
+        const t = (performance.now() % duration) / duration;
+
+        const radius = (size / 2) * 0.3;
+        const outerRadius = (size / 2) * 0.7 * t + radius;
+        const context = this.context;
+
+        // Draw the outer circle.
+        context.clearRect(0, 0, this.width, this.height);
+        context.beginPath();
+        context.arc(
+            this.width / 2,
+            this.height / 2,
+            outerRadius,
+            0,
+            Math.PI * 2
+        );
+        context.fillStyle = `rgba(200, 217, 255, ${1 - t})`;
+        context.fill();
+
+        // Draw the inner circle.
+        context.beginPath();
+        context.arc(
+            this.width / 2,
+            this.height / 2,
+            radius,
+            0,
+            Math.PI * 2
+        );
+        context.fillStyle = 'rgba(33, 41, 255, 1)';
+        context.strokeStyle = 'white';
+        context.lineWidth = 2 + 4 * (1 - t);
+        context.fill();
+        context.stroke();
+
+        // Update this image's data with data from the canvas.
+        this.data = context.getImageData(
+            0,
+            0,
+            this.width,
+            this.height
+        ).data;
+
+        // Continuously repaint the map, resulting
+        // in the smooth animation of the dot.
+        map.triggerRepaint();
+
+        // Return `true` to let the map know that the image was updated.
+        return true;
+    }
+};
+const pulsingDotYellow = {
+    width: size,
+    height: size,
+    data: new Uint8Array(size * size * 4),
+
+    // When the layer is added to the map,
+    // get the rendering context for the map canvas.
+    onAdd: function () {
+        const canvas = document.createElement('canvas');
+        canvas.width = this.width;
+        canvas.height = this.height;
+        this.context = canvas.getContext('2d');
+    },
+
+    // Call once before every frame where the icon will be used.
+    render: function () {
+        const duration = 1000;
+        const t = (performance.now() % duration) / duration;
+
+        const radius = (size / 2) * 0.3;
+        const outerRadius = (size / 2) * 0.7 * t + radius;
+        const context = this.context;
+
+        // Draw the outer circle.
+        context.clearRect(0, 0, this.width, this.height);
+        context.beginPath();
+        context.arc(
+            this.width / 2,
+            this.height / 2,
+            outerRadius,
+            0,
+            Math.PI * 2
+        );
+        context.fillStyle = `rgba(255, 228, 166, ${1 - t})`;
+        context.fill();
+
+        // Draw the inner circle.
+        context.beginPath();
+        context.arc(
+            this.width / 2,
+            this.height / 2,
+            radius,
+            0,
+            Math.PI * 2
+        );
+        context.fillStyle = 'rgba(255, 225, 33, 1)';
+        context.strokeStyle = 'white';
+        context.lineWidth = 2 + 4 * (1 - t);
+        context.fill();
+        context.stroke();
+
+        // Update this image's data with data from the canvas.
+        this.data = context.getImageData(
+            0,
+            0,
+            this.width,
+            this.height
+        ).data;
+
+        // Continuously repaint the map, resulting
+        // in the smooth animation of the dot.
+        map.triggerRepaint();
+
+        // Return `true` to let the map know that the image was updated.
+        return true;
+    }
+};
 map.on('style.load', () => {
-    if (map.hasImage('pulsing-dotRed')) {
+    if (map.hasImage('pulsing-dotRed'))
+    {
         map.removeImage('pulsing-dotRed');
     }
-    if (map.hasImage('pulsing-dotGreen')) {
+    if (map.hasImage('pulsing-dotGreen'))
+    {
         map.removeImage('pulsing-dotGreen');
+    }
+    if (map.hasImage('pulsing-dotBlue'))
+    {
+        map.removeImage('pulsing-dotBlue');
+    }
+    if (map.hasImage('pulsing-dotYellown'))
+    {
+        map.removeImage('pulsing-dotYellow');
     }
     map.addImage('pulsing-dotRed', pulsingDotRed, { pixelRatio: 2 });
     map.addImage('pulsing-dotGreen', pulsingDotGreen, { pixelRatio: 2 });
+    map.addImage('pulsing-dotBlue', pulsingDotBlue, { pixelRatio: 2 });
+    map.addImage('pulsing-dotYellow', pulsingDotYellow, { pixelRatio: 2 });
 });
+function PointClick(e) {
+
+    var layername = e.features[0]["layer"]["id"];
+    debugger;
+    var features = map.queryRenderedFeatures(e.point, {
+        layers: [layername]
+        //layers: ["points_layer_" + VehicleId + "_" + CountNumber]
+    });
+    var latClick = e.lngLat["lat"];
+    var lngClick = e.lngLat["lng"];
+    var c = latClick + "," + lngClick;
+    var direction = features[0].properties.direction;
+    var speed = features[0].properties.speed;
+    var idling = features[0].properties.idling;
+    var time = features[0].properties.time;
+    var fuel_level = features[0].properties.fuel_level;
+    $.ajax({
+        url: "https://revgeocode.search.hereapi.com/v1/revgeocode",
+        dataType: "json",
+        data: {
+            at: c,
+            language: "English",
+            apiKey: "Yz1ARROaW8ea690aQ2_0iwYEIjbQFtqHCsbcGV39ugA",
+        },
+        success: function (data) {
+            addressPopup = data.items[0];
+            addressPopup = addressPopup["title"];
+            var html = '<b>Address :</b> ' + addressPopup + '<br/>';
+             html += '<b>Direction :</b> ' + direction + '<br/>'
+            html += '<b>Fuel Level :</b> ' + fuel_level + '<br/>';
+            if (idling != undefined && idling != null && idling != '') {
+                html += '<b>Total Stop Time :</b> ' + idling + ' <b>Minutes</b> <br/>';
+            }
+            html += '<b>Time :</b> ' + time + '<br/>';
+            html += '<b>Speed :</b> ' + speed + '<br/>';
+            new mapboxgl.Popup({ closeOnClick: true })
+                .setLngLat([e.lngLat.lng, e.lngLat.lat])
+                .setHTML(html)
+                .addTo(map);
+
+        },
+        error: function (msg) { alert(msg); }
+    });
+
+}
 function AddTelemeteryLayers(VehicleId, RouteData, PointData, CountNumber) {
+   
     if (map.getLayer("route_layer_" + VehicleId + "_" + CountNumber)) {
         map.removeLayer("route_layer_" + VehicleId + "_" + CountNumber);
     }
@@ -491,8 +684,9 @@ function AddTelemeteryLayers(VehicleId, RouteData, PointData, CountNumber) {
         map.removeSource("route_source_" + VehicleId + "_" + CountNumber);
     }
     if (map.getLayer("points_layer_" + VehicleId + "_" + CountNumber)) {
+        map.off('click', 'points_layer_' + VehicleId + "_" + CountNumber, PointClick);
         map.removeLayer("points_layer_" + VehicleId + "_" + CountNumber);
-    }
+        }
     if (map.getSource("points_source_" + VehicleId + "_" + CountNumber)) {
         map.removeSource("points_source_" + VehicleId + "_" + CountNumber);
     }
@@ -539,47 +733,11 @@ function AddTelemeteryLayers(VehicleId, RouteData, PointData, CountNumber) {
             "icon-allow-overlap": true
         }
     });
-    map.on('click', "points_layer_" + VehicleId + "_" + CountNumber, function (e) {
-        var features = map.queryRenderedFeatures(e.point, {
-            layers: ["points_layer_" + VehicleId + "_" + CountNumber]
-        });
-        var latClick = e.lngLat["lat"];
-        var lngClick = e.lngLat["lng"];
-        var c = latClick + "," + lngClick;
-        var direction = features[0].properties.direction;
-        var speed = features[0].properties.speed;
-        var idling = features[0].properties.idling;
-        var time = features[0].properties.time;
-        $.ajax({
-            url: "https://revgeocode.search.hereapi.com/v1/revgeocode",
-            dataType: "json",
-            data: {
-                at: c,
-                language: "English",
-                apiKey: "Yz1ARROaW8ea690aQ2_0iwYEIjbQFtqHCsbcGV39ugA",
-            },
-            success: function (data) {
-                addressPopup = data.items[0];
-                addressPopup = addressPopup["title"];
-                var html = '<b>Direction :</b> ' + direction + '<br/>'
-                html += '<b>Address :</b> ' + addressPopup + '<br/>';
-                if (idling != undefined && idling != null && idling != '') {
-                    html += '<b>Total Stop Time :</b> ' + idling + ' <b>Minutes</b> <br/>';
-                }
-                html += '<b>Time :</b> ' + time + '<br/>';
-                html += '<b>Speed :</b> ' + speed + '<br/>';
-                new mapboxgl.Popup({ closeOnClick: true })
-                    .setLngLat([e.lngLat.lng, e.lngLat.lat])
-                    .setHTML(html)
-                    .addTo(map);
-
-            },
-            error: function (msg) { alert(msg); }
-        });
-
-    });
+    map.on('click', 'points_layer_' + VehicleId + "_" + CountNumber, PointClick);
+    //map.on('click', "points_layer_" + VehicleId + "_" + CountNumber,);
+   
 }
-function GetRoute(FromDate,name,objectId,id)
+function GetRoute(FromDate, name, objectId, id, api_key)
 {
     var TimeSerial = ["1", "2", "3", "4", "5", "6", "7", "8"];
     var ArrFrom = [FromDate + "T00:00:00Z", FromDate + "T03:00:00Z", FromDate + "T06:00:00Z", FromDate + "T09:00:00Z", FromDate + "T12:00:00Z", FromDate + "T15:00:00Z", FromDate + "T18:00:00Z", FromDate + "T21:00:00Z"];
@@ -596,6 +754,7 @@ function GetRoute(FromDate,name,objectId,id)
                 map.removeSource("route_source_" + objectId + "_" + TimeSerial[i]);
             }
             if (map.getLayer("points_layer_" + objectId + "_" + TimeSerial[i])) {
+                map.off('click', 'points_layer_' + objectId + "_" + TimeSerial[i], PointClick);
                 map.removeLayer("points_layer_" + objectId + "_" + TimeSerial[i]);
             }
             if (map.getSource("points_source_" + objectId + "_" + TimeSerial[i])) {
@@ -623,7 +782,8 @@ function GetRoute(FromDate,name,objectId,id)
                 FromDate: ArrFrom[0],
                 ToDate: ArrTo[0],
                 VehicleId: objectId,
-                name: name
+                name: name,
+                api_key: api_key
             },
             success: function (res) {
                 CountSerial1 = parseInt(res.Count);
@@ -645,7 +805,8 @@ function GetRoute(FromDate,name,objectId,id)
                 FromDate: ArrFrom[1],
                 ToDate: ArrTo[1],
                 VehicleId: objectId,
-                name: name
+                name: name,
+                api_key: api_key
             },
             success: function (res) {
                 CountSerial2 = parseInt(res.Count);
@@ -667,7 +828,8 @@ function GetRoute(FromDate,name,objectId,id)
                 FromDate: ArrFrom[2],
                 ToDate: ArrTo[2],
                 VehicleId: objectId,
-                name: name
+                name: name,
+                api_key: api_key
             },
             success: function (res) {
                 CountSerial3 = parseInt(res.Count);
@@ -688,7 +850,8 @@ function GetRoute(FromDate,name,objectId,id)
                 FromDate: ArrFrom[3],
                 ToDate: ArrTo[3],
                 VehicleId: objectId,
-                name: name
+                name: name,
+                api_key: api_key
             },
             success: function (res) {
 
@@ -712,7 +875,8 @@ function GetRoute(FromDate,name,objectId,id)
                 FromDate: ArrFrom[4],
                 ToDate: ArrTo[4],
                 VehicleId: objectId,
-                name: name
+                name: name,
+                api_key: api_key
             },
             success: function (res) {
 
@@ -734,7 +898,8 @@ function GetRoute(FromDate,name,objectId,id)
                 FromDate: ArrFrom[5],
                 ToDate: ArrTo[5],
                 VehicleId: objectId,
-                name: name
+                name: name,
+                api_key: api_key
             },
             success: function (res) {
 
@@ -756,7 +921,8 @@ function GetRoute(FromDate,name,objectId,id)
                 FromDate: ArrFrom[6],
                 ToDate: ArrTo[6],
                 VehicleId: objectId,
-                name: name
+                name: name,
+                api_key: api_key
             },
             success: function (res) {
                 CountSerial7 = parseInt(res.Count);
@@ -778,7 +944,8 @@ function GetRoute(FromDate,name,objectId,id)
                 FromDate: ArrFrom[7],
                 ToDate: ArrTo[7],
                 VehicleId: objectId,
-                name: name
+                name: name,
+                api_key: api_key
             },
             success: function (res) {
 
@@ -847,7 +1014,6 @@ $('#txtDateFilter').change(function () {
     var date = $('#txtDateFilter').val();
     BuildlegendsForParcels(date);
 });
-//GetRoute('2022-04-15', 'DAL1-137428-DX20741', 'c48d2a62-52b4-11eb-8dcd-6fd375e1d7de');
 function BuildlegendsForParcels(date)
 {
     var x = document.getElementById("legend");
@@ -867,6 +1033,7 @@ function BuildlegendsForParcels(date)
                     x.style.display = "block";
                     var vehicle_name = dataVehicles[k]["name"];
                     var shiffty_object_id = dataVehicles[k]["vehicle_id"];
+                    var api_key = dataVehicles[k]["api_key"];
                     if (vehicle_name != '')
                     {
                         var item = document.createElement('div');
@@ -875,8 +1042,8 @@ function BuildlegendsForParcels(date)
                         key.className = 'legend-key';
                         key.style.backgroundColor = '#0394fc';
                         key.style.opacity = 1;
-                        var params = "'" + date + "','" + vehicle_name + "','" + shiffty_object_id + "',this.id";
-                        var liveParams = "'" + shiffty_object_id + "','" + date + "',this.id,true";
+                        var params = "'" + date + "','" + vehicle_name + "','" + shiffty_object_id + "',this.id,'" + api_key+"'";
+                        var liveParams = "'" + shiffty_object_id + "','" + date + "',this.id,true,'" + api_key +"'";
                         var html_switch = '&nbsp;&nbsp;<label class="switch"  data-toggle="tooltip" data-placement="top" title="Telemetery" ><input class="chkRoutes" value="' + vehicle_name + '" name ="' + vehicle_name + '"   id="' + shiffty_object_id + '"  type="checkbox"  onchange="GetRoute(' + params + ')"><span class="slider round"></span></label>';
                         var html_Classification = '';
                         if (date == OnLoadDate)
@@ -901,7 +1068,7 @@ function BuildlegendsForParcels(date)
 
 }
 var GlobalLiveLocation = [];
-function GetLiveTruckSingle(objectid, date, ctrlId,btnClick) {
+function GetLiveTruckSingle(objectid, date, ctrlId, btnClick, api_key_param) {
     sourceslist = map.getStyle().sources;
     Global_objectid = objectid;
     Global_serial_number = objectid;
@@ -950,7 +1117,7 @@ function GetLiveTruckSingle(objectid, date, ctrlId,btnClick) {
         }
     }
     GlobalshiftyId = objectid;
-    const apikey = "Zlj5pAw8n4De5Edfzsb5EzEiyrpzoIJv";
+    const apikey = api_key_param;//"Zlj5pAw8n4De5Edfzsb5EzEiyrpzoIJv";
 
     const API_url = "https://gps-api.shiftyy.com/object-coordinates-stream?version=2&object_id=" + objectid + "&api_key=" + apikey;
 
@@ -964,9 +1131,10 @@ function GetLiveTruckSingle(objectid, date, ctrlId,btnClick) {
         GlobalLng = message.position.longitude;
         var obj = {
             ["id"]: message.object_id,
+            ["ignition_status"]: message.ignition_status,
             ["latitude"]: message.position.latitude,
             ["longitude"]: message.position.longitude,
-            ["movement"]: message.inputs.movement
+            ["movement"]: message.inputs.device_inputs.movement
 
         }
         const pos = GlobalLiveLocation.findIndex(el => el.id === message.object_id);
@@ -976,19 +1144,33 @@ function GetLiveTruckSingle(objectid, date, ctrlId,btnClick) {
         }
         GlobalLiveLocation.push(obj);
         if (message.position.longitude != null) {
-            addLayerLiveNewGreenBlink(message.object_id, message.position.latitude, message.position.longitude, 'pulsing-dotGreen')
-        }
-        else {
-            var chk = GlobalLiveLocation.filter(function (obj) {
-                return obj.id == id;
-            });
-            if (chk.length > 0) {
-                var id = chk[0].id;
-                var latitude = chk[0].latitude;
-                var longitude = chk[0].longitude;
-                addLayerLiveNewGreenBlink(id, latitude, longitude, 'pulsing-dotRed');
+            if (message.ignition_status == "OFF")
+            {
+                addLayerLiveNewGreenBlink(message.object_id, message.position.latitude, message.position.longitude, 'pulsing-dotBlue')
+
+            }
+            if (message.inputs.device_inputs.movement == "STILL")
+            {
+                addLayerLiveNewGreenBlink(message.object_id, message.position.latitude, message.position.longitude, 'pulsing-dotYellow')
+
+            }
+            if (message.inputs.device_inputs.movement == "MOVING")
+            {
+                addLayerLiveNewGreenBlink(message.object_id, message.position.latitude, message.position.longitude, 'pulsing-dotGreen')
+
             }
         }
+        //else {
+        //    var chk = GlobalLiveLocation.filter(function (obj) {
+        //        return obj.id == id;
+        //    });
+        //    if (chk.length > 0) {
+        //        var id = chk[0].id;
+        //        var latitude = chk[0].latitude;
+        //        var longitude = chk[0].longitude;
+        //        addLayerLiveNewGreenBlink(id, latitude, longitude, 'pulsing-dotRed');
+        //    }
+        //}
     }
     eventSource.onerror = (error) => {
         var urlFetch = error.srcElement.url;
@@ -999,19 +1181,53 @@ function GetLiveTruckSingle(objectid, date, ctrlId,btnClick) {
         var chk = GlobalLiveLocation.filter(function (obj) {
             return obj.id == id;
         });
-        if (chk.length > 0)
-        {
+        if (chk.length > 0) {
             var id = chk[0].id;
             var latitude = chk[0].latitude;
             var longitude = chk[0].longitude;
-            addLayerLiveNewGreenBlink(id, latitude, longitude, 'pulsing-dotRed');
+            addLayerLiveNewGreenBlink(id, latitude, longitude, 'pulsing-dotBlue');
+        }
+        else
+        {
+            addLayerLiveNewGreenBlink(id, 32.95595, -96.876995, 'pulsing-dotBlue');
         }
       
     }
 
 }
-function addLayerLiveNewGreenBlink(object, lat, lng, iconName) {
-    if (map.getSource("lyrTrucks" + object)) {
+function addLayerLiveNewGreenBlink(object, lat, lng, iconName)
+{
+    const popupAddress = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+    });
+    function mouseenterLive(e) {
+        
+            map.getCanvas().style.cursor = 'pointer';
+            var cLat = e.lngLat["lat"];
+            var cLng = e.lngLat["lng"];
+            $.ajax({
+                method: "GET",
+                url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + cLat + "&lon=" + cLng,
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    // map.spin(true);
+                }
+            }).done(function (data) {
+                debugger;
+                var address = data.address["road"] + "," + data.address["county"] + "," + data.address["state"] + "," + data.address["postcode"] + "," + data.address["country"];
+                var htmlPopup = '<b>Address :</b> ' + address + '<br/>';
+                popupAddress.setLngLat([cLng, cLat]).setHTML(htmlPopup).addTo(map);
+            });
+        }
+    function mouseleaveLive(e) {
+        map.getCanvas().style.cursor = '';
+        popupAddress.remove();
+    }
+    if (map.getSource("lyrTrucks" + object))
+    {
+        map.off('mouseenter', 'lyrTrucks' + object, mouseenterLive);
+        map.off('mouseleave', 'lyrTrucks' + object, mouseleaveLive);
         map.removeLayer('lyrTrucks' + object);
         map.removeSource('lyrTrucks' + object);
     }
@@ -1046,14 +1262,17 @@ function addLayerLiveNewGreenBlink(object, lat, lng, iconName) {
             //"icon-allow-overlap": true
         }
     });
-    map.on('mouseenter', 'lyrTrucks' + object, function () {
-        map.getCanvas().style.cursor = 'pointer';
-    });
-    map.on('mouseleave', 'lyrTrucks' + object, function () {
-        map.getCanvas().style.cursor = '';
-    });
+   
+    map.on('mouseenter', 'lyrTrucks' + object, mouseenterLive);
+    map.on('mouseleave', 'lyrTrucks' + object, mouseleaveLive);
+    //map.on('mouseenter', 'lyrTrucks' + object, function () {
+    //    map.getCanvas().style.cursor = 'pointer';
+    //});
+    //map.on('mouseleave', 'lyrTrucks' + object, function () {
+    //    map.getCanvas().style.cursor = '';
+    //});
 }
 setTimeout(function () {
-    GetLiveTruckSingle('c48d2a62-52b4-11eb-8dcd-6fd375e1d7de', '2022-4-21', 'imgBtnLiveLocationDAL1-137428-DX20741', true);
-},1000);
+    GetLiveTruckSingle('c48d2a62-52b4-11eb-8dcd-6fd375e1d7de', '2022-4-21', 'imgBtnLiveLocationDAL1-137428-DX20741', true, "Zlj5pAw8n4De5Edfzsb5EzEiyrpzoIJv");
+},5000);
 
